@@ -5704,9 +5704,6 @@ textarea.form-control-lg {
   color: var(--bs-navbar-brand-color);
   white-space: nowrap;
 }
-.navbar-brand a img {
-  max-height: 68px;
-}
 .navbar-brand:hover, .navbar-brand:focus {
   color: var(--bs-navbar-brand-hover-color);
 }
@@ -42981,4 +42978,21 @@ footer.bg-dark.angled.lower-start:after, footer.bg-dark.angled.upper-start:befor
     margin: 0 auto;
     position: relative;
   }
+}
+header {
+  box-shadow: 2px 4px 2px #e1e1e1;
+}
+
+.navbar-stick {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar-brand a img {
+  height: 68px;
 }
