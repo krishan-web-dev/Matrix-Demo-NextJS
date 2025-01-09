@@ -36,6 +36,7 @@ import Services35 from "./Services35";
 import Services36 from "./Services36";
 import Services37 from "./Services37";
 import Services38 from "./Services38";
+import ServicesMatrix from "./ServicesMatrix";
 
 export {
   Services1,
@@ -75,5 +76,6 @@ export {
   Services35,
   Services36,
   Services37,
-  Services38
+  Services38,
+  ServicesMatrix,
 };
