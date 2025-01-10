@@ -29,7 +29,8 @@ export default function Navbar3({
   navClassName = "navbar navbar-expand-lg center-logo transparent position-absolute navbar-dark"
 }: Navbar3Props) {
   useNestedDropdown();
-  const sticky = useSticky(350);
+  //const sticky = useSticky(350);
+  const sticky = useSticky(50);
   const navbarRef = useRef<HTMLElement | null>(null);
 
   // dynamically added navbar classname
@@ -37,8 +38,8 @@ export default function Navbar3({
 
   const logos = (
     <>
-      <img className="logo-dark" src={`/img/${logoAlt}.png`} srcSet={`/img/${logoAlt}@2x.png 2x`} alt={logoAlt} />
-      <img className="logo-light" src="/img/logo-light.png" srcSet="/img/logo-light@2x.png 2x" alt="logo-light" />
+      <img className="logo-dark" src={`/img/logo-dark.png`} srcSet={`/img/${logoAlt}@2x.png 2x`} alt={logoAlt} />
+      <img className="logo-light" src="/img/logo-dark.png" srcSet="/img/logo-light@2x.png 2x" alt="logo-light" />
     </>
   );
 

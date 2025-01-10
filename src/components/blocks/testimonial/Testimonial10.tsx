@@ -5,7 +5,7 @@ import { testimonialList } from "data/demo-7";
 
 export default function Testimonial10() {
   return (
-    <section className="wrapper bg-soft-primary">
+    <section className="wrapper bg-light">
       <div className="container py-14 py-md-17">
         <div className="row mt-md-n25">
           <div className="col-md-10 offset-md-1 col-lg-8 offset-lg-2 mx-auto text-center">

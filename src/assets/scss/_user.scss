@@ -6,8 +6,50 @@ $text-opacity: 0.8;
 $transition-duration: 0.35s;
 $transition-delay: 0.05s;
 
+// Brand Background Color
+$brand-bg-primary-color: rgb(89, 111, 97);
+$brand-bg-secondary-color: #F8F7E5;
+$brand-bg-third-color: #1D1D1D;
+
 header {
     box-shadow: 2px 4px 2px #e1e1e1;
+
+    .fixed {
+        &.navbar-stick {
+            background: rgba(0, 0, 0, .05);
+            border-radius: 0;
+            border: 0;
+        }
+    }
+}
+
+.brand-bg-primary {
+    animation: background-color-animation 10s infinite;
+    //background-color: $brand-bg-primary-color;
+}
+
+.brand-bg-secondary {
+    background-color: $brand-bg-secondary-color;
+}
+
+.brand-bg-third {
+    background-color: $brand-bg-third-color;
+}
+
+@keyframes background-color-animation {
+    0% {
+        background-color: $brand-bg-primary-color;
+    }
+
+    25% {
+        background-color: rgb(94 69 108);
+    }
+
+    50% {
+        background-color: $brand-bg-primary-color;
+    }
+
+    100% {}
 }
 
 .navbar-stick {
@@ -27,6 +69,91 @@ header {
         }
     }
 }
+
+//Section Background Noise
+.bg-noise {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: url('https://brewdistrict24.com/assets/img/noise.png');
+    background-position: center center;
+    opacity: .2;
+}
+
+// Cards Component
+
+.card-item {
+    position: relative;
+    height: 19rem;
+    background-color: lightGrey;
+    overflow-y: hidden;
+    box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.1);
+
+    h3 {
+        margin: 0;
+        display: block;
+        background-color: deeppink;
+        padding: 1rem;
+        transform: translate3d(0, -100%, 0);
+        transition: transform 300ms;
+    }
+
+    a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        &:hover,
+        &:focus {
+            .item__overlay {
+                transform: translate3d(0, 0, 0);
+
+                h3 {
+                    transform: translate3d(0, 0, 0);
+                }
+
+                .item__body {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .item__body {
+            flex-grow: 1;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 500ms 100ms;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    .item__overlay {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        transition: transform 300ms;
+    }
+}
+
 
 // Card Lily Style
 

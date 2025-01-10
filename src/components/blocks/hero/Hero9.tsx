@@ -15,7 +15,7 @@ export default function Hero9() {
   };
 
   return (
-    <section className="wrapper bg-soft-primary">
+    <section className="wrapper brand-bg-primary">
       <div className="container pt-10 pb-12 pt-md-14 pb-md-17">
         <div className="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
           <div className="col-md-10 offset-md-1 offset-lg-0 col-lg-5 mt-lg-n2 text-center text-lg-start order-2 order-lg-0">
@@ -106,6 +106,7 @@ export default function Hero9() {
           </div>
         </div>
       </div>
+      <div className="bg-noise"></div>
     </section>
   );
 }
