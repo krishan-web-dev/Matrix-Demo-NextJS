@@ -14,6 +14,9 @@
     "incremental": true,
     "plugins": [{ "name": "next" }],
     "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "target": "ESNext"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

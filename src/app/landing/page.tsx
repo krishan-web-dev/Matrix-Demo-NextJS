@@ -2,14 +2,15 @@ import Link from "next/link";
 import { Fragment } from "react";
 // GLOBAL CUSTOM COMPONENTS
 import Navbar from "components/blocks/navbar/navbar-1";
-import { Hero15 } from "components/blocks/hero";
-import { Footer18 } from "components/blocks/footer";
-import { Pricing12 } from "components/blocks/pricing";
+import { Hero15, Hero23 } from "components/blocks/hero";
+import { Footer12, Footer18 } from "components/blocks/footer";
 import { Process21 } from "components/blocks/process";
-import { Services37, ServicesMatrix } from "components/blocks/services";
-import { About35, About36, About4 } from "components/blocks/about";
-import { Testimonial28 } from "components/blocks/testimonial";
+import { Services1, Services37, ServicesMatrix } from "components/blocks/services";
+import { About35, About36, About4, About9 } from "components/blocks/about";
+import { Testimonial4 } from "components/blocks/testimonial";
 import { Portfolio9 } from "components/blocks/portfolio";
+import { Clients4 } from "@/components/blocks/clients";
+import { Blog4 } from "@/components/blocks/blog";
 
 export default function LandingPage() {
     return (
@@ -33,18 +34,12 @@ export default function LandingPage() {
                 {/* ========== what we do section ========== */}
                 <section className="bg-light">
                     <div className="container py-15 py-md-17 pb-md-17">
-                        <About4 />
+                        <About9 />
                     </div>
                 </section>
                 <ServicesMatrix />
                 <Services37 />
-                <Portfolio9 />
-
-                {/* ========== happy customer section ========== */}
-                <Testimonial28 />
-
-                {/* ========== why choose us section ========== */}
-                <About35 />
+                <Services1 />
 
                 {/* ========== our solutions section ========== */}
                 <Process21 />
@@ -53,15 +48,26 @@ export default function LandingPage() {
                     <div className="container py-15 py-md-17">
                         {/* ========== what make us different section ========== */}
                         <About36 />
+                    </div>
+                </section>
+                <Clients4 />
+                {/* ========== happy customer section ========== */}
+                <section className="wrapper bg-light">
+                    <div className="container">
+                        {/* ========== what make us different section ========== */}
+                        <Testimonial4 />
+                    </div>
+                </section>
 
-                        {/* ========== our pricing & faq section ========== */}
-                        <Pricing12 />
+                <section className="wrapper bg-gray">
+                    <div className="container py-15">
+                        <Blog4 />
                     </div>
                 </section>
             </main>
 
             {/* ========== footer section ========== */}
-            <Footer18 />
+            <Footer12 />
         </Fragment>
     );
 }

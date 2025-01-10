@@ -1,6 +1,7 @@
 "use client";
 
 import NextLink from "components/reuseable/links/NextLink";
+import Image from "next/image";
 
 export default function ServicesMatrix() {
     return (
@@ -57,32 +58,31 @@ export default function ServicesMatrix() {
                     <div className="col-lg-6">
                         <div className="card bg-soft-leaf mb-10">
                             <div className="card-body p-12 pb-0">
-                                <h3 className="h1 post-title mb-3">Missio Theme</h3>
+                                <h3 className="h1 post-title mb-3">Automobile Maintenance Equipment</h3>
                                 <p>
-                                    Maecenas faucibus mollis interdum sed posuere porta consectetur cursus porta lobortis. Scelerisque id
-                                    ligula felis.
+                                    Matrix enhances service levels for top car dealers by providing premium automobile maintenance equipment, including lifts, washing systems, tire-care tools, versatile service-care equipment, and installation services.
                                 </p>
                                 <NextLink title="See Our Products" href="#" className="more hover link-leaf mb-8" />
                             </div>
 
-                            <img className="card-img-bottom" src="/img/photos/f3.png" srcSet="/img/photos/f3@2x.png 2x" alt="" />
+                            <img className="card-img-bottom" src="/img/auto-mobile-equipment.jpg" srcSet="/img/photos/f3@2x.png 2x" alt="" />
                         </div>
                     </div>
 
                     <div className="col-lg-6">
                         <div className="card bg-soft-pink">
                             <div className="card-body p-12 pb-0">
-                                <h3 className="h1 post-title mb-3">Storage App</h3>
+                                <h3 className="h1 post-title mb-3">Car Parking Solutions</h3>
                                 <p>
-                                    Maecenas faucibus mollis interdum sed posuere consectetur est at lobortis. Scelerisque id ligula porta
-                                    felis euismod semper.
+                                    Matrix addresses conventional car parking challenges by offering advanced solutions for optimal space utilization. With state-of-the-art designs and safety-compliant installations, Matrix ensures functionality and customer satisfaction.
                                 </p>
                                 <NextLink title="See Our Products" href="#" className="more hover link-pink mb-8" />
                             </div>
 
-                            <img className="card-img-bottom" src="/img/photos/f4.png" srcSet="/img/photos/f4@2x.png 2x" alt="" />
+                            <img className="card-img-bottom" src="/img/car-parking.jpg" srcSet="/img/photos/f4@2x.png 2x" alt="" />
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
