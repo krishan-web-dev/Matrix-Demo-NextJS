@@ -7,7 +7,7 @@ $transition-duration: 0.35s;
 $transition-delay: 0.05s;
 
 // Brand Background Color
-$brand-bg-primary-color: rgb(89, 111, 97);
+$brand-bg-primary-color: #75846a;
 $brand-bg-secondary-color: #F8F7E5;
 $brand-bg-third-color: #1D1D1D;
 
@@ -23,9 +23,15 @@ header {
     }
 }
 
+.brand-bg-default {
+    position: relative;
+    background-color: rgb(106 126 132) 100%;
+    background: linear-gradient(352deg, rgba(255, 255, 255, 1) 0%, rgb(241 241 241) 45%, rgb(106 126 132) 100%);
+}
+
 .brand-bg-primary {
-    animation: background-color-animation 10s infinite;
-    //background-color: $brand-bg-primary-color;
+    //animation: background-color-animation 10s infinite;
+    background-color: $brand-bg-primary-color;
 }
 
 .brand-bg-secondary {
@@ -89,15 +95,19 @@ header {
     height: 19rem;
     background-color: lightGrey;
     overflow-y: hidden;
-    box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.1);
 
     h3 {
         margin: 0;
         display: block;
-        background-color: deeppink;
         padding: 1rem;
         transform: translate3d(0, -100%, 0);
         transition: transform 300ms;
+        background-color: rgb(72 86 103 / 40%);
+        color: #fff;
+        text-transform: uppercase;
+        font-size: large;
+        backdrop-filter: blur(5px);
+
     }
 
     a {
@@ -107,32 +117,6 @@ header {
         width: 100%;
         height: 100%;
         z-index: 1;
-
-        &:hover,
-        &:focus {
-            .item__overlay {
-                transform: translate3d(0, 0, 0);
-
-                h3 {
-                    transform: translate3d(0, 0, 0);
-                }
-
-                .item__body {
-                    opacity: 1;
-                }
-            }
-        }
-
-        .item__body {
-            flex-grow: 1;
-            padding: 1rem;
-            opacity: 0;
-            transition: opacity 500ms 100ms;
-
-            p {
-                margin: 0;
-            }
-        }
     }
 
     img {
@@ -151,13 +135,50 @@ header {
         width: 100%;
         top: 0;
         transition: transform 300ms;
+        background-color: rgb(72 86 103 / 60%);
+        transform: translate3d(0, 100%, 0);
+        backdrop-filter: blur(15px);
+
+        p {
+            font-size: larger;
+        }
+    }
+
+    .item__body {
+        flex-grow: 1;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 300ms;
+
+        p {
+            margin: 0;
+            color: #fff;
+        }
+    }
+
+    &:hover {
+        .item__overlay {
+            transform: translate3d(0, 0, 0);
+
+            h3 {
+                transform: translate3d(0, 0, 0);
+                background-color: transparent;
+            }
+
+            .item__body {
+                opacity: 1;
+            }
+        }
     }
 }
 
+.gradient-background {
+    background: linear-gradient(166deg, #75846a, #f8f7e5);
+    background-size: 120% 120%;
+    animation: gradient-animation 12s ease infinite;
+}
 
-// Card Lily Style
-
-@keyframes gradientAnimation {
+@keyframes gradient-animation {
     0% {
         background-position: 0% 50%;
     }
@@ -168,5 +189,39 @@ header {
 
     100% {
         background-position: 0% 50%;
+    }
+}
+
+section {
+    &.watermark {
+        position: relative;
+        z-index: 1;
+
+        background: linear-gradient(346deg, #f2f3eb, #ffffff);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            /* Center vertically */
+            right: -70%;
+            /* Center horizontally */
+            width: 70%;
+            /* Base size of the watermark */
+            height: 60%;
+            background-image: url('/img/watermark-color.png');
+            /* Use CSS variable for dynamic background */
+            background-size: contain;
+            /* Or 'cover', depending on your needs */
+            background-repeat: no-repeat;
+            //background-position: center;
+            opacity: 0.6;
+            /* Watermark transparency */
+            transform: translate(-50%, -50%) scale(1) rotate(-15deg);
+            /* Scale and re-center */
+            z-index: 0;
+            /* Ensure it stays behind content */
+            filter: grayscale(100%) blur(1px) brightness(0.7);
+        }
     }
 }

@@ -2,25 +2,87 @@
 
 export default function CardsStyle1() {
     return (
-        <div>
-            <section className="wrapper bg-light">
-                <div className="container pt-10 pb-12 pt-md-14 pb-md-17">
-                    <div className="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
-                        <div className="col-md-4">
-                            <div className="card shadow-lg card-item">
-                                <a href="#0" aria-labelledby="person1"></a>
-                                <img src='/img/auto-mobile-equipment.jpg' alt='' />
-                                <div className="item__overlay">
-                                    <h3 id="person1" aria-hidden="true">Person Name 1</h3>
-                                    <div className="item__body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
+
+        <section className="wrapper bg-light watermark">
+            <div className="container pt-10 pb-12 pt-md-14 pb-md-17">
+                <div className="row gx-lg-5 gy-6 align-items-center">
+                    <div className="col-md-4" data-cues="fadeIn">
+                        <div className="card shadow-lg card-item" >
+                            <img src='/img/fork-lift.jpg' alt='' />
+                            <div className="item__overlay">
+                                <h3 id="person1" aria-hidden="true">Material Handling Equipment</h3>
+                                <div className="item__body">
+                                    <p>Matrix specializes in comprehensive material handling solutions, including movement, protection,
+                                        storage, and control across manufacturing, warehousing, and distribution. Partnering with global brands,
+                                        Matrix ensures quality, safety, and value-driven, customer-specific solutions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4" data-cues="fadeIn">
+                        <div className="card shadow-lg card-item">
+                            <img src='/img/auto-mobile-equipment.jpg' alt='' />
+                            <div className="item__overlay">
+                                <h3 id="person1" aria-hidden="true">Automobile Maintenance Equipment</h3>
+                                <div className="item__body">
+                                    <p>Matrix enhances service levels for top car dealers by providing premium automobile maintenance equipment,
+                                        including lifts, washing systems, tire-care tools, versatile service-care equipment, and installation services.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4" data-cues="fadeIn">
+                        <div className="card shadow-lg card-item">
+                            <img src='/img/car-parking.jpg' alt='' />
+                            <div className="item__overlay">
+                                <h3 id="person1" aria-hidden="true">Car Parking Solutions</h3>
+                                <div className="item__body">
+                                    <p>Matrix addresses conventional car parking challenges by offering advanced solutions for optimal space utilization.
+                                        With state-of-the-art designs and safety-compliant installations, Matrix ensures functionality and customer satisfaction.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4" data-cues="fadeIn">
+                        <div className="card shadow-lg card-item">
+                            <img src='/img/car-parking.jpg' alt='' />
+                            <div className="item__overlay">
+                                <h3 id="person1" aria-hidden="true">Car Parking Solutions</h3>
+                                <div className="item__body">
+                                    <p>Matrix addresses conventional car parking challenges by offering advanced solutions for optimal space utilization.
+                                        With state-of-the-art designs and safety-compliant installations, Matrix ensures functionality and customer satisfaction.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4" data-cues="fadeIn">
+                        <div className="card shadow-lg card-item">
+                            <img src='/img/fork-lift.jpg' alt='' />
+                            <div className="item__overlay">
+                                <h3 id="person1" aria-hidden="true">Material Handling Equipment</h3>
+                                <div className="item__body">
+                                    <p>Matrix specializes in comprehensive material handling solutions, including movement, protection,
+                                        storage, and control across manufacturing, warehousing, and distribution. Partnering with global brands,
+                                        Matrix ensures quality, safety, and value-driven, customer-specific solutions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4" data-cues="fadeIn">
+                        <div className="card shadow-lg card-item">
+                            <img src='/img/auto-mobile-equipment.jpg' alt='' />
+                            <div className="item__overlay">
+                                <h3 id="person1" aria-hidden="true">Automobile Maintenance Equipment</h3>
+                                <div className="item__body">
+                                    <p>Matrix enhances service levels for top car dealers by providing premium automobile maintenance equipment,
+                                        including lifts, washing systems, tire-care tools, versatile service-care equipment, and installation services.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
     );
 }
