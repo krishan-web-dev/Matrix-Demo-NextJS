@@ -106,7 +106,7 @@ header {
         color: #fff;
         text-transform: uppercase;
         font-size: large;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(15px);
 
     }
 
@@ -137,7 +137,6 @@ header {
         transition: transform 300ms;
         background-color: rgb(72 86 103 / 60%);
         transform: translate3d(0, 100%, 0);
-        backdrop-filter: blur(15px);
 
         p {
             font-size: larger;
@@ -159,6 +158,7 @@ header {
     &:hover {
         .item__overlay {
             transform: translate3d(0, 0, 0);
+            backdrop-filter: blur(15px);
 
             h3 {
                 transform: translate3d(0, 0, 0);
