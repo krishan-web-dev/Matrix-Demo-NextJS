@@ -1,11 +1,12 @@
 "use client";
+import './cards.scss';
 
 export default function CardsStyle1() {
     return (
 
-        <section className="wrapper bg-light watermark">
+        <section className="wrapper bg-light watermark cards__services sticky-top">
             <div className="container pt-10 pb-12 pt-md-14 pb-md-17">
-                <div className="row gx-lg-5 gy-6 align-items-center">
+                <div className="row g-0 align-items-center">
                     <div className="col-md-4" data-cues="fadeIn">
                         <div className="card shadow-lg card-item" >
                             <img src='/img/fork-lift.jpg' alt='' />

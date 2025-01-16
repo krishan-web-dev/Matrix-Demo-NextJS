@@ -8,7 +8,7 @@ export default function Clients4() {
       <div className="container py-14 py-md-16">
         <div className="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0 mb-10">
           <div className="col-lg-4 mt-lg-2">
-            <h3 className="display-4 mb-3 pe-xxl-5">Trusted by over 300+ clients</h3>
+            <h3 className="display-4 mb-3 pe-xxl-5">Our Trusted by Brands</h3>
             <p className="lead fs-lg mb-0 pe-xxl-5">
               We <span className="underline">bring solutions</span> to make life easier for our customers.
             </p>

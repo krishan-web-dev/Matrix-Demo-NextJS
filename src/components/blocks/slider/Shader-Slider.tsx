@@ -25,7 +25,7 @@ interface ExtendedSwiperOptions {
 
 export default function ShaderSlider() {
     return (
-        <section className="wrapper">
+        <section className="wrapper" id='ShaderSlider'>
             <Swiper
                 modules={[Navigation, Autoplay, SwiperGL]}
                 autoplay={{ delay: 5000 }}

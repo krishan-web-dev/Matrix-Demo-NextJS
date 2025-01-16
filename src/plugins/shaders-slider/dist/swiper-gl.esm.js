@@ -5599,7 +5599,7 @@ class GL {
       this.images.push(img.src);
     });
 
-    console.log('Images to load:', this.images);
+    //console.log('Images to load:', this.images);
 
     this.images.forEach((url, i) => {
       const promise = new Promise((resolve) => {

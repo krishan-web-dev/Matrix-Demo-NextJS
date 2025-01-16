@@ -15,9 +15,8 @@ export default function Blog5() {
         <div className="container py-14 py-md-16">
           <div className="row">
             <div className="col-xl-7 col-xxl-6 mx-auto text-center">
-              <i className="icn-flower text-leaf fs-30 opacity-25"></i>
               <h2 className="display-5 text-center mt-2 mb-10">
-                Here are the latest posts from my blog that grabbed the most attention.
+                Insights & Updates:<br /> Explore Our Latest Blog Posts
               </h2>
             </div>
           </div>
@@ -54,13 +53,6 @@ export default function Blog5() {
                           <li className="post-date">
                             <i className="uil uil-calendar-alt" />
                             <span>{dayjs(item.createdAt).format("DD MMM YYYY")}</span>
-                          </li>
-
-                          <li className="post-comments">
-                            <Link href="#">
-                              <i className="uil uil-comment" />
-                              {item.comments}
-                            </Link>
                           </li>
                         </ul>
                       </div>
