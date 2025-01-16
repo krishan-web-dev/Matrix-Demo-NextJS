@@ -4,7 +4,7 @@ import { whatWeAre } from "data/demo-8";
 
 export default function About9() {
   return (
-    <div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-18 align-items-center">
+    <div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 align-items-center">
       <div className="col-md-8 col-lg-6 position-relative">
         <div
           className="shape bg-soft-primary rounded-circle rellax w-20 h-20"

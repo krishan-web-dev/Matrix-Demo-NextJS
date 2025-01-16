@@ -4355,7 +4355,7 @@ Better rank ordering method by Stefan Gustavson in 2012.
  SOFTWARE.
  */
 
-// 
+//
 const F2 =  0.5 * (Math.sqrt(3.0) - 1.0);
 const G2 =  (3.0 - Math.sqrt(3.0)) / 6.0;
 // I'm really not sure why this | 0 (basically a coercion to int)
@@ -5598,6 +5598,8 @@ class GL {
     container.querySelectorAll('.swiper-gl-image').forEach((img) => {
       this.images.push(img.src);
     });
+
+    console.log('Images to load:', this.images);
 
     this.images.forEach((url, i) => {
       const promise = new Promise((resolve) => {
