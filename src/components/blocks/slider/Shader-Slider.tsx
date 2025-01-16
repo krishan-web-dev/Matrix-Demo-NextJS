@@ -6,6 +6,14 @@ import '@/plugins/shaders-slider/navigation.scss';
 import SwiperGL from '@/plugins/shaders-slider/dist/swiper-gl.esm.js';
 import '@/plugins/shaders-slider/dist/swiper-gl.scss';
 
+// Extend SwiperOptions to include the 'gl' property
+declare module 'swiper' {
+    interface SwiperOptions {
+        gl?: {
+            shader: string;
+        };
+    }
+}
 
 export default function ShaderSlider() {
     return (
