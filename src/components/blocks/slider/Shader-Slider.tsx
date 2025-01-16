@@ -7,12 +7,20 @@ import SwiperGL from '@/plugins/shaders-slider/dist/swiper-gl.esm.js';
 import '@/plugins/shaders-slider/dist/swiper-gl.scss';
 
 // Extend SwiperOptions to include the 'gl' property
+/*
 declare module 'swiper' {
     interface SwiperOptions {
         gl?: {
             shader: string;
         };
     }
+}
+    */
+
+interface ExtendedSwiperOptions {
+    gl?: {
+        shader: string;
+    };
 }
 
 export default function ShaderSlider() {
@@ -24,7 +32,10 @@ export default function ShaderSlider() {
                 speed={1000}
                 loop={true}
                 effect="gl"
-                onBeforeInit={(swiper) => (swiper.params.gl.shader = 'wind')}
+                onBeforeInit={(swiper) => {
+                    // @ts-ignore
+                    swiper.params.gl = { shader: 'wind' };
+                }}
                 navigation={{
                     nextEl: '.swiper-nxt',
                     prevEl: '.swiper-prev'
