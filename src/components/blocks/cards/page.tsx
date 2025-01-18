@@ -5,7 +5,7 @@ export default function CardsStyle1() {
     return (
 
         <section className="wrapper bg-light watermark cards__services .brand-bg-primary">
-            <div className="container pt-10 pb-12 pt-md-14 pb-md-17">
+            <div className="container-fluid pt-10 pb-12 pt-md-14 pb-md-17">
                 <div className="row g-0 align-items-center sticky-top">
                     <div className="col-lg-4 col-md-6 col-sm-6" data-cues="fadeIn">
                         <div className="card shadow-lg card-item" >

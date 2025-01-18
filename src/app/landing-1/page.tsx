@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 // -------- custom component -------- //
 
-import { Footer8 } from "components/blocks/footer";
+import { Footer17 } from "components/blocks/footer";
 import { Testimonial10, Testimonial4 } from "components/blocks/testimonial";
 import Navbar3 from "@/components/blocks/navbar/navbar-3";
 import { CardsStyle1 } from "@/components/blocks/cards";
@@ -10,6 +10,7 @@ import ShaderSlider from "@/components/blocks/slider/Shader-Slider";
 import { Facts7 } from "@/components/blocks/facts";
 import { Clients4 } from "@/components/blocks/clients";
 import { Blog5 } from "@/components/blocks/blog";
+import Scroll_Cards from "@/components/blocks/cards/Scroll_Cards";
 
 export default function LandingPage1() {
     return (
@@ -37,6 +38,7 @@ export default function LandingPage1() {
                     </div>
                 </section>
 
+                <Scroll_Cards />
                 <Facts7 />
                 <Clients4 />
 
@@ -51,7 +53,7 @@ export default function LandingPage1() {
             </main>
 
             {/* ========== footer section ========== */}
-            <Footer8 />
+            <Footer17 />
         </Fragment>
     );
 }
