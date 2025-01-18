@@ -286,3 +286,18 @@ $yellow: #b3d236;
     }
   }
 }
+
+.scroll__card_nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  z-index: 1;
+  background-color: #b3d236;
+
+  i {
+    font-size: 35px;
+    color: #1d1d1d;
+  }
+}
