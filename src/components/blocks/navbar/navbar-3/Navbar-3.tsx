@@ -38,8 +38,8 @@ export default function Navbar3({
 
   const logos = (
     <>
-      <img className="logo-dark" src={`/img/logo-dark.png`} srcSet={`/img/${logoAlt}@2x.png 2x`} alt={logoAlt} />
-      <img className="logo-light" src="/img/logo-dark.png" srcSet="/img/logo-light@2x.png 2x" alt="logo-light" />
+      <img className="logo-dark" src={`/img/logo-dark.png`} alt="Matrix (Pvt) Ltd." />
+      <img className="logo-light" src="/img/logo-dark.png" alt="Matrix (Pvt) Ltd." />
     </>
   );
 
@@ -75,7 +75,7 @@ export default function Navbar3({
               className="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
               <div className="offcanvas-header mx-lg-auto order-0 order-lg-1 d-lg-flex px-lg-15">
                 <NextLink href="/" className="transition-none d-none d-lg-flex" title={logos} />
-                <h3 className="text-white fs-30 mb-0 d-lg-none">Sandbox</h3>
+                <h3 className="text-white fs-30 mb-0 d-lg-none">Matrix (Pvt) Ltd.</h3>
                 <button
                   type="button"
                   aria-label="Close"
@@ -114,9 +114,9 @@ export default function Navbar3({
               <div className="offcanvas-body d-lg-none order-4 mt-auto">
                 <div className="offcanvas-footer">
                   <div>
-                    <NextLink title="info@email.com" className="link-inverse" href="mailto:first.last@email.com" />
+                    <NextLink title="matrix@slmatrix.com" className="link-inverse" href="mailto:matrix@slmatrix.com" />
                     <br />
-                    <NextLink href="tel:0123456789" title="00 (123) 456 78 90" />
+                    <NextLink href="tel:+94779560462" title="+94 77 956 0462" />
                     <br />
                     <SocialLinks />
                   </div>

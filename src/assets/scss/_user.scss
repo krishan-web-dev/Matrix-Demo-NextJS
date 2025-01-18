@@ -89,90 +89,6 @@ header {
     opacity: .2;
 }
 
-// Cards Component
-
-.card-item {
-    position: relative;
-    height: 19rem;
-    background-color: lightGrey;
-    overflow-y: hidden;
-
-    h3 {
-        margin: 0;
-        display: block;
-        padding: 1rem;
-        transform: translate3d(0, -100%, 0);
-        transition: transform 300ms;
-        background-color: rgb(72 86 103 / 40%);
-        color: #fff;
-        text-transform: uppercase;
-        font-size: large;
-        backdrop-filter: blur(15px);
-
-    }
-
-    a {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-
-    img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
-    }
-
-    .item__overlay {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%;
-        position: absolute;
-        width: 100%;
-        top: 0;
-        transition: transform 300ms;
-        background-color: rgb(72 86 103 / 60%);
-        transform: translate3d(0, 100%, 0);
-
-        p {
-            font-size: larger;
-        }
-    }
-
-    .item__body {
-        flex-grow: 1;
-        padding: 1rem;
-        opacity: 0;
-        transition: opacity 300ms;
-
-        p {
-            margin: 0;
-            color: #fff;
-        }
-    }
-
-    &:hover {
-        .item__overlay {
-            transform: translate3d(0, 0, 0);
-            backdrop-filter: blur(15px);
-
-            h3 {
-                transform: translate3d(0, 0, 0);
-                background-color: transparent;
-            }
-
-            .item__body {
-                opacity: 1;
-            }
-        }
-    }
-}
-
 .gradient-background {
     background: linear-gradient(166deg, #75846a, #f8f7e5);
     background-size: 120% 120%;
@@ -230,28 +146,115 @@ section {
 
 // Navigation
 .glass__navbar {
-    .navbar {
-        backdrop-filter: blur(15px);
-    }
 
     .offcanvas-nav {
-        border-bottom: 2px solid #c3c3c3 !important;
+        //border-bottom: 2px solid #c3c3c3 !important;
+
+        .offcanvas-body {
+            position: relative;
+
+            @media (min-width: 992px) {
+                &::after {
+                    content: "";
+                    height: 1px;
+                    left: 0;
+                    position: absolute;
+                    top: auto;
+                    width: 100%;
+                    bottom: 0;
+                    background: #F8F7E5;
+                    opacity: 1;
+                    -webkit-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+                    -moz-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+                    -ms-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+                    -o-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+                    transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+                }
+
+            }
+        }
+
+        .offcanvas-header {
+            z-index: 99999;
+        }
     }
 
-    .offcanvas-header {
+    .fixed.navbar-stick {
+        @media (min-width: 992px) {
+            .offcanvas-body {
+                &.order-1 {
+                    &::after {
+                        width: calc(100% + 20vw);
+                        left: -15.9vw;
+                    }
+                }
 
-        position: relative;
-        height: 75px;
+                &.order-3 {
+                    &::after {
+                        width: calc(100% + 20.8vw);
+                        left: -5vw;
+                    }
+                }
+            }
 
-        a {
-            position: absolute;
-            top: 20px;
-            left: 27%;
+            .dropdown-mega {
+                &:hover {
 
+                    .mega-menu.mega-menu {
+                        margin-top: 0 !important;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .navbar {
+        backdrop-filter: blur(15px);
+
+        @media (min-width: 992px) {
+            .dropdown-mega {
+                &:hover {
+
+                    .mega-menu.mega-menu {
+                        position: fixed;
+                        /* top: 100px; */
+                        left: 0;
+                        width: 100vw;
+                        z-index: 1050;
+                        margin-left: 0 !important;
+                        margin-right: 0 !important;
+                        border-radius: 0 0 5px 5px;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    .navbar-expand-lg {
+        .offcanvas-nav {
+            width: 100%;
         }
     }
 }
 
+.offcanvas-header {
+
+    position: relative;
+    height: 75px;
+
+    a {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+    }
+}
 
 // Fullscreen Section
 .full__screen {

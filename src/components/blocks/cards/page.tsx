@@ -4,10 +4,10 @@ import './cards.scss';
 export default function CardsStyle1() {
     return (
 
-        <section className="wrapper bg-light watermark cards__services sticky-top">
+        <section className="wrapper bg-light watermark cards__services .brand-bg-primary">
             <div className="container pt-10 pb-12 pt-md-14 pb-md-17">
-                <div className="row g-0 align-items-center">
-                    <div className="col-md-4" data-cues="fadeIn">
+                <div className="row g-0 align-items-center sticky-top">
+                    <div className="col-lg-4 col-md-6 col-sm-6" data-cues="fadeIn">
                         <div className="card shadow-lg card-item" >
                             <img src='/img/fork-lift.jpg' alt='' />
                             <div className="item__overlay">
@@ -20,7 +20,7 @@ export default function CardsStyle1() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4" data-cues="fadeIn">
+                    <div className="col-lg-4 col-md-6 col-sm-6" data-cues="fadeIn">
                         <div className="card shadow-lg card-item">
                             <img src='/img/auto-mobile-equipment.jpg' alt='' />
                             <div className="item__overlay">
@@ -32,7 +32,7 @@ export default function CardsStyle1() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4" data-cues="fadeIn">
+                    <div className="col-lg-4 col-md-6 col-sm-6" data-cues="fadeIn">
                         <div className="card shadow-lg card-item">
                             <img src='/img/car-parking.jpg' alt='' />
                             <div className="item__overlay">
@@ -44,7 +44,7 @@ export default function CardsStyle1() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4" data-cues="fadeIn">
+                    <div className="col-lg-4 col-md-6 col-sm-6" data-cues="fadeIn">
                         <div className="card shadow-lg card-item">
                             <img src='/img/car-parking.jpg' alt='' />
                             <div className="item__overlay">
@@ -56,7 +56,7 @@ export default function CardsStyle1() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4" data-cues="fadeIn">
+                    <div className="col-lg-4 col-md-6 col-sm-6" data-cues="fadeIn">
                         <div className="card shadow-lg card-item">
                             <img src='/img/fork-lift.jpg' alt='' />
                             <div className="item__overlay">
@@ -69,7 +69,7 @@ export default function CardsStyle1() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4" data-cues="fadeIn">
+                    <div className="col-lg-4 col-md-6 col-sm-6" data-cues="fadeIn">
                         <div className="card shadow-lg card-item">
                             <img src='/img/auto-mobile-equipment.jpg' alt='' />
                             <div className="item__overlay">

@@ -1,7 +1,113 @@
+// Cards Component
+
+.card-item {
+    position: relative;
+    height: 19rem;
+    background-color: lightGrey;
+    overflow-y: hidden;
+
+    h3 {
+        margin: 0;
+        display: block;
+        padding: 1rem;
+        transform: translate3d(0, -100%, 0);
+        transition: transform 300ms;
+        background-color: rgb(72 86 103 / 40%);
+        color: #fff;
+        text-transform: uppercase;
+        font-size: large;
+        backdrop-filter: blur(15px);
+
+    }
+
+    a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    .item__overlay {
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        transition: transform 300ms;
+        background-color: rgb(72 86 103 / 60%);
+        transform: translate3d(0, 100%, 0);
+
+        p {
+            font-size: larger;
+        }
+    }
+
+    .item__body {
+        flex-grow: 1;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 300ms;
+
+        p {
+            margin: 0;
+            color: #fff;
+        }
+    }
+
+    &:hover {
+        .item__overlay {
+            transform: translate3d(0, 0, 0);
+            backdrop-filter: blur(15px);
+
+            h3 {
+                transform: translate3d(0, 0, 0);
+                background-color: transparent;
+            }
+
+            .item__body {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 .cards__services {
     overflow: hidden;
 
     .card {
         border-radius: 0;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .card-item {
+        height: 15rem;
+    }
+}
+
+// ##Device = Laptops, Desktops
+// ##Screen = B/w 1025px to 1280px
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .card-item {
+        height: 15rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .card-item {
+        height: 19rem;
     }
 }
