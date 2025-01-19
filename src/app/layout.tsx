@@ -28,8 +28,8 @@ import "assets/scss/style.scss";
 const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sandbox - Modern & Multipurpose NextJS Template",
-  description: "Sandbox is a beautiful and flawless site template."
+  title: "Matrix (Pvt) Ltd. | Industrial & Engineering Solutions in Sri Lanka",
+  description: "Matrix (Pvt) Ltd. offers 25+ years of expertise in industrial and engineering solutions, including compressed air systems, material handling, and turnkey services tailored to your business needs."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

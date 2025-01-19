@@ -29,7 +29,7 @@ export default function Hero35() {
             options={{
               loop: true,
               autoStart: true,
-              strings: ['text 1', 'text 2', 'text 3']
+              strings: ['global excellence', 'trusted partner', 'innovative solutions']
             }}
           />
         </h2>

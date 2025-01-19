@@ -16,7 +16,7 @@ interface ExtendedSwiperOptions {
 // Slide data array
 const slides = [
     {
-        imgSrc: "/img/01.jpg",
+        imgSrc: "/img/slider/banner/warehouse-management.jpg",
         title: "Who Are We?",
         paragraphs: [
             "We are a digital and branding company that believes in the power of creative strategy and along with great design.",
@@ -24,7 +24,7 @@ const slides = [
         ]
     },
     {
-        imgSrc: "/img/02.jpg",
+        imgSrc: "/img/slider/banner/car-oark-solutions.jpg",
         title: "Who Are We?",
         paragraphs: [
             "We are a digital and branding company that believes in the power of creative strategy and along with great design.",
@@ -32,7 +32,15 @@ const slides = [
         ]
     },
     {
-        imgSrc: "/img/03.jpg",
+        imgSrc: "/img/slider/banner/industrial-workshop.jpg",
+        title: "Who Are We?",
+        paragraphs: [
+            "We are a digital and branding company that believes in the power of creative strategy and along with great design.",
+            "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+        ]
+    },
+    {
+        imgSrc: "/img/slider/banner/escalator-handling.jpg",
         title: "Who Are We?",
         paragraphs: [
             "We are a digital and branding company that believes in the power of creative strategy and along with great design.",
@@ -67,7 +75,9 @@ export default function ShaderSlider() {
                                 <div className="row align-items-center">
                                     <div className="col-lg-6 order-lg-2"></div>
                                     <div className="col-lg-6 content__block">
-                                        <h2 className="display-4 mb-3">{slide.title}</h2>
+                                        <h2 className="display-4 mb-3">
+                                            <span className='underline-3 style-3 green'>{slide.title}</span>
+                                        </h2>
                                         {slide.paragraphs.map((paragraph, pIndex) => (
                                             <p key={pIndex} className="lead fs-lg">{paragraph}</p>
                                         ))}
