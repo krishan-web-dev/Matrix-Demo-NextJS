@@ -87,10 +87,10 @@ export default function Navbar3({
               <div className="w-100 order-1 order-lg-0 d-lg-flex offcanvas-body">
                 <div className="navbar-nav ms-lg-auto">
                   {/* ===================== demos nav item ===================== */}
-                  <DemosNavItem />
+                  {/*<DemosNavItem /> */}
 
                   {/*  ===================== pages nav item  ===================== */}
-                  <PagesNavItem />
+                  {/*<PagesNavItem /> */}
 
                   {/* ===================== projects nav item  ===================== */}
                   <ProjectsNavItem />
@@ -103,10 +103,10 @@ export default function Navbar3({
                   <BlogNavItem />
 
                   {/* ===================== block nav item ===================== */}
-                  <BlocksNavItem />
+                  {/*<BlocksNavItem /> *}
 
                   {/* ===================== documentation nav item ===================== */}
-                  <DocumentationNavItem />
+                  {/*<DocumentationNavItem /> */}
                 </div>
               </div>
 

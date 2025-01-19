@@ -26,25 +26,49 @@ export default function Scroll_Cards() {
     const cards = [
         {
             img: '/img/fork-lift.jpg',
-            title: 'Material Handling Equipment',
+            title: 'Compressed Air Solutions',
             subtitle: 'Specializing in material handling solutions with quality, safety, and value.',
             link: 'http://www.dimolanka.com/our-sectors/agriculture/',
         },
         {
             img: 'https://www.dimolanka.com/wp-content/uploads/2023/03/Agriculture-800x800-.jpg',
-            title: 'Agriculture',
+            title: 'Material Handling Equipement',
             subtitle: 'Advanced farming solutions for a sustainable future',
             link: 'http://www.dimolanka.com/our-sectors/agriculture/',
         },
         {
             img: '/img/fork-lift.jpg',
-            title: 'Material Handling Equipment',
+            title: 'Automobile Maintenance Equipment',
             subtitle: 'Specializing in material handling solutions with quality, safety, and value.',
             link: 'http://www.dimolanka.com/our-sectors/agriculture/',
         },
         {
             img: 'https://www.dimolanka.com/wp-content/uploads/2023/03/Agriculture-800x800-.jpg',
-            title: 'Agriculture',
+            title: 'Car Parking Solutions',
+            subtitle: 'Advanced farming solutions for a sustainable future',
+            link: 'http://www.dimolanka.com/our-sectors/agriculture/',
+        },
+        {
+            img: '/img/fork-lift.jpg',
+            title: 'Elevators & Escalators',
+            subtitle: 'Specializing in material handling solutions with quality, safety, and value.',
+            link: 'http://www.dimolanka.com/our-sectors/agriculture/',
+        },
+        {
+            img: 'https://www.dimolanka.com/wp-content/uploads/2023/03/Agriculture-800x800-.jpg',
+            title: 'Welding Products',
+            subtitle: 'Advanced farming solutions for a sustainable future',
+            link: 'http://www.dimolanka.com/our-sectors/agriculture/',
+        },
+        {
+            img: '/img/fork-lift.jpg',
+            title: 'After Care & Rental',
+            subtitle: 'Specializing in material handling solutions with quality, safety, and value.',
+            link: 'http://www.dimolanka.com/our-sectors/agriculture/',
+        },
+        {
+            img: 'https://www.dimolanka.com/wp-content/uploads/2023/03/Agriculture-800x800-.jpg',
+            title: 'Solar Systems',
             subtitle: 'Advanced farming solutions for a sustainable future',
             link: 'http://www.dimolanka.com/our-sectors/agriculture/',
         },
@@ -66,8 +90,16 @@ export default function Scroll_Cards() {
     return (
         <section className="wrapper bg-light hm-discover">
             <div className="container-fluid">
+                <div className='row justify-content-md-center'>
+                    <div className="col-md-6 mt-16 mt-md-18 mb-10 mb-md-12 text-center">
+                        <h2 className="fs-16 text-uppercase text-muted mb-3">What Makes Us Different?</h2>
+                        <h3 className="display-2 ls-xs mb-8">
+                            We bring <span className="underline-3 style-2 yellow">solutions</span> to make life easier for our customers.
+                        </h3>
+                    </div>
+                </div>
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-md-12 mb-10 mb-md-12">
                         {/* Scroll Card */}
                         {isCarouselEnabled ? (
                             <div className="discover-list hm-discover-carousel grid">

@@ -31,22 +31,22 @@ export default function About36() {
 
         <div className="row gy-6">
           <div className="col-md-6">
-            <h3 className="fs-21 ls-xs mb-1">Creativity</h3>
+            <h3 className="fs-21 ls-xs mb-1">Title 1</h3>
             <p className="mb-0">Curabitur blandit lacus magna ridiculus mus duis mollis.</p>
           </div>
 
           <div className="col-md-6">
-            <h3 className="fs-21 ls-xs mb-1">Innovative Thinking</h3>
+            <h3 className="fs-21 ls-xs mb-1">Title 2</h3>
             <p className="mb-0">Curabitur blandit lacus magna ridiculus mus duis mollis.</p>
           </div>
 
           <div className="col-md-6">
-            <h3 className="fs-21 ls-xs mb-1">Rapid Solutions</h3>
+            <h3 className="fs-21 ls-xs mb-1">Title 3</h3>
             <p className="mb-0">Curabitur blandit lacus magna ridiculus mus duis mollis.</p>
           </div>
 
           <div className="col-md-6">
-            <h3 className="fs-21 ls-xs mb-1">Top-Notch Support</h3>
+            <h3 className="fs-21 ls-xs mb-1">Title 4</h3>
             <p className="mb-0">Curabitur blandit lacus magna ridiculus mus duis mollis.</p>
           </div>
         </div>

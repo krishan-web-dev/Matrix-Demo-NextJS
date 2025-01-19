@@ -2,15 +2,15 @@ import { Fragment } from "react";
 // -------- custom component -------- //
 
 import { Footer17 } from "components/blocks/footer";
-import { Testimonial10, Testimonial4 } from "components/blocks/testimonial";
+import { Testimonial4 } from "components/blocks/testimonial";
 import Navbar3 from "@/components/blocks/navbar/navbar-3";
-import { CardsStyle1 } from "@/components/blocks/cards";
 import { About36, About9 } from "@/components/blocks/about";
 import ShaderSlider from "@/components/blocks/slider/Shader-Slider";
 import { Facts7 } from "@/components/blocks/facts";
 import { Clients4 } from "@/components/blocks/clients";
 import { Blog5 } from "@/components/blocks/blog";
 import Scroll_Cards from "@/components/blocks/cards/Scroll_Cards";
+import { Hero35 } from "@/components/blocks/hero";
 
 export default function LandingPage1() {
     return (
@@ -23,22 +23,20 @@ export default function LandingPage1() {
             {/* ========== main content ========== */}
             <main className="content-wrapper">
                 <ShaderSlider />
-
-                <section className="brand-bg-default full__screen">
+                <section className="full__screen bg-color-1">
                     <div className="container">
-                        <About9 />
+                        <Hero35 />
                     </div>
                 </section>
 
-                <CardsStyle1 />
+                <Scroll_Cards />
 
-                <section className="wrapper bg-light">
+                <section className="wrapper bg-color-2">
                     <div className="container py-15 py-md-17">
                         <About36 />
                     </div>
                 </section>
 
-                <Scroll_Cards />
                 <Facts7 />
                 <Clients4 />
 

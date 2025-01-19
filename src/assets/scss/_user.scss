@@ -8,258 +8,262 @@ $transition-delay: 0.05s;
 
 // Brand Background Color
 $brand-bg-primary-color: #75846a;
-$brand-bg-secondary-color: #F8F7E5;
-$brand-bg-third-color: #1D1D1D;
+$brand-bg-secondary-color: #f8f7e5;
+$brand-bg-third-color: #1d1d1d;
+$color-1: rgb(111, 142, 153);
+$color-2: aliceblue;
 
 header {
-    box-shadow: 2px 4px 2px #e1e1e1;
+  box-shadow: 2px 4px 2px #e1e1e1;
 
-    .fixed {
-        &.navbar-stick {
-            background: rgba(0, 0, 0, .05);
-            border-radius: 0;
-            border: 0;
-        }
+  .fixed {
+    &.navbar-stick {
+      /*background: rgba(0, 0, 0, .05); */
+      background: rgb(255 241 241 / 55%);
+      border-radius: 0;
+      border: 0;
     }
+  }
 }
-
+.bg-color-1 {
+  background: $color-1;
+}
+.bg-color-2 {
+  background: $color-2;
+}
 .brand-bg-default {
-    position: relative;
-    background-color: #ffffff;
-    background: linear-gradient(166deg, #ffffff, #fffddf);
-    //background: linear-gradient(352deg, rgba(255, 255, 255, 1) 0%, rgb(241 241 241) 45%, rgb(106 126 132) 100%);
+  position: relative;
+  background-color: #ffffff;
+  background: linear-gradient(166deg, #ffffff, #fffddf);
+  //background: linear-gradient(352deg, rgba(255, 255, 255, 1) 0%, rgb(241 241 241) 45%, rgb(106 126 132) 100%);
 }
 
 .brand-bg-primary {
-    //animation: background-color-animation 10s infinite;
-    background-color: $brand-bg-primary-color;
+  //animation: background-color-animation 10s infinite;
+  background-color: $brand-bg-primary-color;
 }
 
 .brand-bg-secondary {
-    background-color: $brand-bg-secondary-color;
+  background-color: $brand-bg-secondary-color;
 }
 
 .brand-bg-third {
-    background-color: $brand-bg-third-color;
+  background-color: $brand-bg-third-color;
 }
 
 @keyframes background-color-animation {
-    0% {
-        background-color: $brand-bg-primary-color;
-    }
+  0% {
+    background-color: $brand-bg-primary-color;
+  }
 
-    25% {
-        background-color: rgb(94 69 108);
-    }
+  25% {
+    background-color: rgb(94 69 108);
+  }
 
-    50% {
-        background-color: $brand-bg-primary-color;
-    }
+  50% {
+    background-color: $brand-bg-primary-color;
+  }
 
-    100% {}
+  100% {
+  }
 }
 
 .navbar-stick {
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .navbar-brand {
-    a {
-        img {
-            height: 68px;
-        }
+  a {
+    img {
+      height: 68px;
     }
+  }
 }
 
 //Section Background Noise
 .bg-noise {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: url('https://brewdistrict24.com/assets/img/noise.png');
-    background-position: center center;
-    opacity: .2;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: url("https://brewdistrict24.com/assets/img/noise.png");
+  background-position: center center;
+  opacity: 0.2;
 }
 
 .gradient-background {
-    background: linear-gradient(166deg, #75846a, #f8f7e5);
-    background-size: 120% 120%;
-    animation: gradient-animation 12s ease infinite;
+  background: linear-gradient(166deg, #75846a, #f8f7e5);
+  background-size: 120% 120%;
+  animation: gradient-animation 12s ease infinite;
 }
 
 @keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
 
-    50% {
-        background-position: 100% 50%;
-    }
+  50% {
+    background-position: 100% 50%;
+  }
 
-    100% {
-        background-position: 0% 50%;
-    }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 section {
-    &.watermark {
-        position: relative;
-        z-index: 1;
+  &.watermark {
+    position: relative;
+    z-index: 1;
 
-        background: linear-gradient(346deg, #f2f3eb, #ffffff);
+    background: linear-gradient(346deg, #f2f3eb, #ffffff);
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 40%;
-            /* Center vertically */
-            right: -70%;
-            /* Center horizontally */
-            width: 70%;
-            /* Base size of the watermark */
-            height: 60%;
-            background-image: url('/img/watermark-color.png');
-            /* Use CSS variable for dynamic background */
-            background-size: contain;
-            /* Or 'cover', depending on your needs */
-            background-repeat: no-repeat;
-            //background-position: center;
-            opacity: 0.6;
-            /* Watermark transparency */
-            transform: translate(-50%, -50%) scale(1) rotate(-15deg);
-            /* Scale and re-center */
-            z-index: 0;
-            /* Ensure it stays behind content */
-            filter: grayscale(100%) blur(1px) brightness(0.7);
-        }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 40%;
+      /* Center vertically */
+      right: -70%;
+      /* Center horizontally */
+      width: 70%;
+      /* Base size of the watermark */
+      height: 60%;
+      background-image: url("/img/watermark-color.png");
+      /* Use CSS variable for dynamic background */
+      background-size: contain;
+      /* Or 'cover', depending on your needs */
+      background-repeat: no-repeat;
+      //background-position: center;
+      opacity: 0.6;
+      /* Watermark transparency */
+      transform: translate(-50%, -50%) scale(1) rotate(-15deg);
+      /* Scale and re-center */
+      z-index: 0;
+      /* Ensure it stays behind content */
+      filter: grayscale(100%) blur(1px) brightness(0.7);
     }
+  }
 }
-
 
 // Navigation
 .glass__navbar {
+  .offcanvas-nav {
+    //border-bottom: 2px solid #c3c3c3 !important;
 
-    .offcanvas-nav {
-        //border-bottom: 2px solid #c3c3c3 !important;
+    .offcanvas-body {
+      position: relative;
 
-        .offcanvas-body {
-            position: relative;
-
-            @media (min-width: 992px) {
-                &::after {
-                    content: "";
-                    height: 1px;
-                    left: 0;
-                    position: absolute;
-                    top: auto;
-                    width: 100%;
-                    bottom: 0;
-                    background: #F8F7E5;
-                    opacity: 1;
-                    -webkit-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
-                    -moz-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
-                    -ms-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
-                    -o-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
-                    transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
-                }
-
-            }
+      @media (min-width: 992px) {
+        &::after {
+          content: "";
+          height: 1px;
+          left: 0;
+          position: absolute;
+          top: auto;
+          width: 100%;
+          bottom: 0;
+          background: #f8f7e5;
+          opacity: 1;
+          -webkit-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s,
+            opacity 0.3s;
+          -moz-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s,
+            opacity 0.3s;
+          -ms-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s,
+            opacity 0.3s;
+          -o-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s,
+            opacity 0.3s;
+          transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s,
+            opacity 0.3s;
         }
-
-        .offcanvas-header {
-            z-index: 99999;
-        }
+      }
     }
 
-    .fixed.navbar-stick {
-        @media (min-width: 992px) {
-            .offcanvas-body {
-                &.order-1 {
-                    &::after {
-                        width: calc(100% + 20vw);
-                        left: -15.9vw;
-                    }
-                }
+    .offcanvas-header {
+      z-index: 99999;
+    }
+  }
 
-                &.order-3 {
-                    &::after {
-                        width: calc(100% + 20.8vw);
-                        left: -5vw;
-                    }
-                }
-            }
-
-            .dropdown-mega {
-                &:hover {
-
-                    .mega-menu.mega-menu {
-                        margin-top: 0 !important;
-                    }
-                }
-            }
+  .fixed.navbar-stick {
+    @media (min-width: 992px) {
+      .offcanvas-body {
+        &.order-1 {
+          &::after {
+            width: calc(100% + 20vw);
+            left: -15.9vw;
+          }
         }
 
-    }
-
-    .navbar {
-        backdrop-filter: blur(15px);
-
-        @media (min-width: 992px) {
-            .dropdown-mega {
-                &:hover {
-
-                    .mega-menu.mega-menu {
-                        position: fixed;
-                        /* top: 100px; */
-                        left: 0;
-                        width: 100vw;
-                        z-index: 1050;
-                        margin-left: 0 !important;
-                        margin-right: 0 !important;
-                        border-radius: 0 0 5px 5px;
-                    }
-                }
-            }
+        &.order-3 {
+          &::after {
+            width: calc(100% + 20.8vw);
+            left: -5vw;
+          }
         }
+      }
 
+      .dropdown-mega {
+        &:hover {
+          .mega-menu.mega-menu {
+            margin-top: 0 !important;
+          }
+        }
+      }
     }
+  }
+
+  .navbar {
+    backdrop-filter: blur(15px);
+
+    @media (min-width: 992px) {
+      .dropdown-mega {
+        &:hover {
+          .mega-menu.mega-menu {
+            position: fixed;
+            /* top: 100px; */
+            left: 0;
+            width: 100vw;
+            z-index: 1050;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            border-radius: 0 0 5px 5px;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 991.98px) {
-
-    .navbar-expand-lg {
-        .offcanvas-nav {
-            width: 100%;
-        }
+  .navbar-expand-lg {
+    .offcanvas-nav {
+      width: 100%;
     }
+  }
 }
 
 .offcanvas-header {
+  position: relative;
+  height: 75px;
 
-    position: relative;
-    height: 75px;
-
-    a {
-        position: absolute;
-        top: 90%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-
-    }
+  a {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }
 
 // Fullscreen Section
 .full__screen {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -8,9 +8,10 @@ export default function Footer17() {
         <div className="row gx-lg-0 gy-6">
           <div className="col-lg-4">
             <div className="widget">
-              <img className="mb-4" src="/img/logo-dark.png" srcSet="/img/logo-dark@2x.png 2x" alt="" />
+              <img className="mb-4" src="/img/logo-dark.png" alt="" />
               <p className="lead mb-0">
-                We are trusted by over 5000+ clients. Join them by using our services and grow your business.
+                We’re dedicated to understanding your needs and delivering tailored turnkey solutions.
+                Contact us today to discover the best business solutions your organization deserves.
               </p>
             </div>
           </div>
@@ -23,8 +24,7 @@ export default function Footer17() {
                 <div>
                   <h5 className="mb-1">Phone</h5>
                   <p className="mb-0">
-                    00 (123) 456 78 90 <br />
-                    00 (987) 654 32 10
+                    +94 779 560 462
                   </p>
                 </div>
               </div>
@@ -37,7 +37,7 @@ export default function Footer17() {
                 <IconBox icon="uil-location-pin-alt" className="icon text-primary fs-28 me-4 mt-n1" />
                 <div className="align-self-start justify-content-start">
                   <h5 className="mb-1">Address</h5>
-                  <address>Moonshine St. 14/05 Light City, London, United Kingdom</address>
+                  <address>No 850, Bulugaha Junction, Kelaniya, Srilanka</address>
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@ export default function Footer17() {
         <hr className="mt-13 mt-md-14 mb-7" />
 
         <div className="d-md-flex align-items-center justify-content-between">
-          <p className="mb-2 mb-lg-0">© 2022 Sandbox. All rights reserved.</p>
+          <p className="mb-2 mb-lg-0">© 2025 Matrix Pvt Ltd. All rights reserved</p>
           <SocialLinks className="nav social social-muted mb-0 text-md-end" />
         </div>
       </div>

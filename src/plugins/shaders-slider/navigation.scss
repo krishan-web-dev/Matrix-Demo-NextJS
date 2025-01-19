@@ -122,13 +122,14 @@
   .swiper-nav {
     height: 50px;
     width: 100px;
-    background: #19211e75;
 
     position: relative;
-
+    /*
+    background: #19211e75;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(15px);
     border-radius: 35px;
+    */
 
     &:before {
       content: "";
