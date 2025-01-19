@@ -72,18 +72,6 @@ export default function Scroll_Cards() {
             subtitle: 'Advanced farming solutions for a sustainable future',
             link: 'http://www.dimolanka.com/our-sectors/agriculture/',
         },
-        {
-            img: '/img/fork-lift.jpg',
-            title: 'Material Handling Equipment',
-            subtitle: 'Specializing in material handling solutions with quality, safety, and value.',
-            link: 'http://www.dimolanka.com/our-sectors/agriculture/',
-        },
-        {
-            img: 'https://www.dimolanka.com/wp-content/uploads/2023/03/Agriculture-800x800-.jpg',
-            title: 'Agriculture',
-            subtitle: 'Advanced farming solutions for a sustainable future',
-            link: 'http://www.dimolanka.com/our-sectors/agriculture/',
-        },
         // Add more card data as needed
     ];
 
