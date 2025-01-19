@@ -12,7 +12,7 @@ export default function Scroll_Cards() {
 
     // Dynamically check screen size
     useEffect(() => {
-        console.log('Current screen width:', window.innerWidth);
+        //console.log('Current screen width:', window.innerWidth);
         const handleResize = () => {
             setIsCarouselEnabled(window.innerWidth <= 1200); // Enable Swiper below 768px
         };
