@@ -22,6 +22,7 @@ export default function Testimonial4() {
         <div className="swiper-container dots-closer mb-6">
           <Carousel
             spaceBetween={0}
+            autoplay={true}
             grabCursor
             navigation={false}
             breakpoints={carouselBreakpoints}>

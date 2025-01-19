@@ -22,7 +22,7 @@ export default function Blog5() {
           </div>
 
           <div className="swiper-container nav-bottom nav-color mb-14 swiper-container-3">
-            <Carousel grabCursor pagination={false} className="overflow-visible pb-2" breakpoints={carouselBreakpoints}>
+            <Carousel grabCursor pagination={false} className="overflow-visible pb-2" breakpoints={carouselBreakpoints} autoplay={true}>
               {blogList3.map((item) => (
                 <article key={item.id}>
                   <div className="card shadow-lg">
