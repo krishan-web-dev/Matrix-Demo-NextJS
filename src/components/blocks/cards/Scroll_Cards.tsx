@@ -80,9 +80,8 @@ export default function Scroll_Cards() {
             <div className="container-fluid">
                 <div className='row justify-content-md-center'>
                     <div className="col-md-6 mt-16 mt-md-18 mb-10 mb-md-12 text-center">
-                        <h2 className="fs-16 text-uppercase text-muted mb-3">What Makes Us Different?</h2>
                         <h3 className="display-2 ls-xs mb-8">
-                            We bring <span className="underline-3 style-2 yellow">solutions</span> to make life easier for our customers.
+                            We bring <span className="underline-3 style-2 br-yellow">solutions</span> to make life easier for our customers.
                         </h3>
                     </div>
                 </div>

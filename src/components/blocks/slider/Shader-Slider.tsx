@@ -76,7 +76,7 @@ export default function ShaderSlider() {
                                     <div className="col-lg-6 order-lg-2"></div>
                                     <div className="col-lg-6 content__block">
                                         <h2 className="display-4 mb-3">
-                                            <span className='underline-3 style-3 green'>{slide.title}</span>
+                                            <span className='underline-3 style-3 br-green'>{slide.title}</span>
                                         </h2>
                                         {slide.paragraphs.map((paragraph, pIndex) => (
                                             <p key={pIndex} className="lead fs-lg">{paragraph}</p>

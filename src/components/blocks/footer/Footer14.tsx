@@ -7,7 +7,7 @@ import footerNav from "data/footer";
 
 export default function Footer14() {
   return (
-    <footer className="bg-dark section-frame mt-15">
+    <footer className="bg-dark section-frame mt-30">
       <div className="container pb-13 pb-md-15">
         {/* ========== newsletter section ========== */}
         <div
@@ -15,9 +15,9 @@ export default function Footer14() {
           style={{ backgroundImage: "url(/img/photos/bg27.jpg)" }}>
           <div className="card-body p-6 p-md-11 d-lg-flex flex-row align-items-lg-center justify-content-md-between text-center text-lg-start">
             <h3 className="display-4 mb-6 mb-lg-0 pe-lg-10 pe-xl-5 pe-xxl-18 text-white">
-              We are trusted by over 5000+ clients. Join them by using our services and grow your business.
+              We are trusted by over 500+ clients. Join them by using our services and grow your business.
             </h3>
-            <NextLink title="Join Us" href="#" className="btn btn-lg btn-white rounded mb-0 text-nowrap" />
+            <NextLink title="Contact us" href="#" className="btn btn-lg btn-white rounded mb-0 text-nowrap" />
           </div>
         </div>
 
@@ -25,10 +25,10 @@ export default function Footer14() {
           <div className="row gy-6 gy-lg-0">
             <div className="col-md-4 col-lg-3">
               <div className="widget">
-                <Image alt="logo" width={134} height={26} src="/img/logo-light.png" />
+                <Image alt="logo" width={60} height={60} src="/img/logo-dark.png" />
 
                 <p className="my-4">
-                  © 2022 Sandbox. <br className="d-none d-lg-block" />
+                  © 2025 Matrix Pvt Ltd. <br className="d-none d-lg-block" />
                   All rights reserved.
                 </p>
 
@@ -39,9 +39,9 @@ export default function Footer14() {
             <div className="col-md-4 col-lg-3">
               <div className="widget">
                 <h4 className="widget-title text-white mb-3">Get in Touch</h4>
-                <address className="pe-xl-15 pe-xxl-17">Moonshine St. 14/05 Light City, London, United Kingdom</address>
-                <NextLink title="info@email.com" href="mailto:#" />
-                <br /> 00 (123) 456 78 90
+                <address className="pe-xl-15 pe-xxl-17">No 850, Bulugaha Junction, Kelaniya, Srilanka</address>
+                <NextLink title="info@slmatrix.com" href="mailto:#" />
+                <br /> +94 (077) 9560 462
               </div>
             </div>
 

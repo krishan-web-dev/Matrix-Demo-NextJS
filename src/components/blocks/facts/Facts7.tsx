@@ -8,7 +8,7 @@ export default function Facts7() {
       className="wrapper image-wrapper bg-image bg-overlay bg-overlay-800 text-white bg-cover"
       style={{ backgroundImage: 'url(/img/photos/bg1.jpg)' }}
     >
-      <div className="container py-14 pt-md-17 pb-md-21">
+      <div className="container py-14 pt-md-17 pb-md-17">
         <div className="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0 mb-2 text-white align-items-center">
           <div className="col-lg-4">
             <h3 className="display-4 text-white mb-3 pe-xxl-15">We are proud of our projects</h3>

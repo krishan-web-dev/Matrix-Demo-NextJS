@@ -12,6 +12,8 @@ $brand-bg-secondary-color: #f8f7e5;
 $brand-bg-third-color: #1d1d1d;
 $color-1: rgb(111, 142, 153);
 $color-2: aliceblue;
+$color-3: #427a33;
+$color-4: #ddde2a;
 
 header {
   box-shadow: 2px 4px 2px #e1e1e1;
@@ -30,6 +32,25 @@ header {
 }
 .bg-color-2 {
   background: $color-2;
+}
+.bg-color-3 {
+  background: $color-3;
+}
+.bg-grd-left {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    222deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(63, 118, 50, 1) 100%
+  );
+}
+.bg-grd-right {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,
+    rgb(255, 255, 255) 0%,
+    rgb(63, 118, 50) 100%
+  );
 }
 .brand-bg-default {
   position: relative;
@@ -266,4 +287,28 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+//SVG underline
+.underline-3.style-3.br-green:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20205%209.37%22%3E%3Cpath%20fill%3D%22%23427a33%22%20d%3D%22M202.47%2C9.37A1191.26%2C1191.26%2C0%2C0%2C0%2C1.79%2C7.48%2C1.67%2C1.67%2C0%2C0%2C1%2C0%2C5.92H0A1.76%2C1.76%2C0%2C0%2C1%2C1.63%2C4.21c67-5.71%2C133.83-5.43%2C200.8-.27A2.75%2C2.75%2C0%2C0%2C1%2C205%2C6.88h0A2.6%2C2.6%2C0%2C0%2C1%2C202.47%2C9.37Z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.underline-3.style-2.br-yellow:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20208.01%208.3%22%3E%3Cpath%20fill%3D%22%23ddde2a%22%20d%3D%22M64.42%2C2.42Q42.78%2C1.46%2C21.19%2C0c-2.8-.19-4.09.89-3.87%2C2L3.92%2C1.87c-5.13-.05-5.28%2C3.87-.12%2C3.92l60.49.55c46.63%2C2.08%2C93.34%2C2.51%2C139.81%2C1.27%2C5-.13%2C5.39-3.87.13-3.92Z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+//Font Color
+.bg-grd-right {
+  h2,
+  h3,
+  p {
+    color: #202020;
+  }
+}
+
+.bg-color-3 {
+  h3 {
+    color: #fff;
+  }
 }

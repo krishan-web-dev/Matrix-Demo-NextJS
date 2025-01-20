@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 // -------- custom component -------- //
 
-import { Footer17 } from "components/blocks/footer";
+import { Footer14, Footer17 } from "components/blocks/footer";
 import { Testimonial4 } from "components/blocks/testimonial";
 import Navbar3 from "@/components/blocks/navbar/navbar-3";
 import { About36, About9 } from "@/components/blocks/about";
@@ -23,7 +23,7 @@ export default function LandingPage1() {
       {/* ========== main content ========== */}
       <main className="content-wrapper">
         <ShaderSlider />
-        <section className="full__screen bg-color-1">
+        <section className="full__screen bg-grd-left">
           <div className="container">
             <Hero35 />
           </div>
@@ -31,7 +31,7 @@ export default function LandingPage1() {
 
         <Scroll_Cards />
 
-        <section className="wrapper bg-color-2">
+        <section className="wrapper bg-grd-right">
           <div className="container py-15 py-md-17">
             <About36 />
           </div>
@@ -40,7 +40,7 @@ export default function LandingPage1() {
         <Facts7 />
         <Clients4 />
 
-        <section className="wrapper bg-light">
+        <section className="wrapper">
           <div className="container">
             <Testimonial4 />
           </div>
@@ -51,7 +51,7 @@ export default function LandingPage1() {
       </main>
 
       {/* ========== footer section ========== */}
-      <Footer17 />
+      <Footer14 />
     </Fragment>
   );
 }

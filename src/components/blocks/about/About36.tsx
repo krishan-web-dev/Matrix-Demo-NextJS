@@ -24,9 +24,8 @@ export default function About36() {
       </div>
 
       <div className="col-lg-6">
-        <h2 className="fs-16 text-uppercase text-muted mb-3">What Makes Us Different?</h2>
         <h3 className="display-2 ls-xs mb-8">
-          We bring <span className="underline-3 style-2 yellow">solutions</span> to make life easier for our customers.
+          We bring <span className="underline-3 style-2 br-yellow">solutions</span> to make life easier for our customers.
         </h3>
 
         <div className="row gy-6">
