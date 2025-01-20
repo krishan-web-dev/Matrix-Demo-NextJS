@@ -45,8 +45,11 @@ export default function About_US() {
     return (
         <Fragment>
             {/* ========== page title section ========== */}
-            <section className="wrapper bg-soft-primary">
-                <div className="container pt-10 pb-20 pt-md-14 pb-md-23 text-center">
+            <section
+                className="wrapper image-wrapper bg-image bg-full bg-overlay"
+                style={{ backgroundImage: 'url(/img/banners/cnc.jpg)' }}
+            >
+                <div className="container pt-20 pb-10 pt-md-14 pb-md-23 text-center">
                     <div className="row">
                         <div className="col-xl-5 mx-auto mb-6">
                             <h1 className="display-1 mb-3">About Us</h1>
@@ -59,18 +62,6 @@ export default function About_US() {
             {/* ========== services section ========== */}
             <section className="wrapper bg-light">
                 <div className="container pb-14 pb-md-16">
-                    <div className="row text-center mb-12 mb-md-15">
-                        <div className="col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-n18 mt-md-n22">
-                            <figure>
-                                <img
-                                    alt=""
-                                    className="w-auto"
-                                    src="/img/illustrations/i8.png"
-                                    srcSet="/img/illustrations/i8@2x.png 2x"
-                                />
-                            </figure>
-                        </div>
-                    </div>
 
                     <div className="row gx-lg-8 gx-xl-12 gy-6 mb-10 align-items-center">
                         <div className="col-lg-6 order-lg-2">
