@@ -312,3 +312,11 @@ section {
     color: #fff;
   }
 }
+
+.progress-wrap:after {
+  color: #ddde2a !important;
+}
+
+.progress-wrap svg.progress-circle path {
+  stroke: #ddde2a !important;
+}
