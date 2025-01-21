@@ -7,7 +7,7 @@ import footerNav from "data/footer";
 
 export default function Footer14() {
   return (
-    <footer className="bg-dark section-frame mt-30">
+    <footer className="bg-dark section-frame mt-20">
       <div className="container pb-13 pb-md-15">
         {/* ========== newsletter section ========== */}
         <div

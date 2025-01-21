@@ -15,7 +15,7 @@ export default function Blog5() {
         <div className="container py-14 py-md-16">
           <div className="row">
             <div className="col-xl-7 col-xxl-6 mx-auto text-center">
-              <h2 className="display-5 text-center mt-2 mb-10">
+              <h2 className="display-5 text-center mt-2 mb-10 text-white">
                 Insights & Updates:<br /> Explore Our Latest Blog Posts
               </h2>
             </div>
