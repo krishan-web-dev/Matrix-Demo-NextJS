@@ -11,6 +11,7 @@ import { Clients4 } from "@/components/blocks/clients";
 import { Blog5 } from "@/components/blocks/blog";
 import Scroll_Cards from "@/components/blocks/cards/Scroll_Cards";
 import { Hero35 } from "@/components/blocks/hero";
+import Scroll_Cards1 from "@/components/blocks/cards/Scroll_Cards_style1";
 
 export default function LandingPage1() {
   return (
@@ -30,6 +31,8 @@ export default function LandingPage1() {
         </section>
 
         <Scroll_Cards />
+
+        <Scroll_Cards1 />
 
         <section className="wrapper bg-grd-right">
           <div className="container py-15 py-md-17">

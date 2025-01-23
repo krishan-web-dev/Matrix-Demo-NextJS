@@ -1,0 +1,94 @@
+.BlogTile_Button__SAl_F {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.Button_Button__vVAZK {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: 0;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.Button_Button__vVAZK > span {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: 0.15s;
+}
+
+.Button_ArrowCont__WrhN_ {
+  background-color: #f9f8f6;
+  padding: 10px;
+  border-radius: 50% 0 0 0;
+  margin: 0 -10px -10px 0;
+}
+
+.Button_ArrowCont__WrhN_ > svg {
+  display: block;
+  width: 20px;
+  position: absolute;
+  top: -17px;
+  right: 0px;
+  transform: rotate(180deg) scale(1.01);
+}
+
+.Button_Arrow__LawjV > svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  transition: 0.3s;
+}
+
+.Button_Arrow__LawjV {
+  width: 50px;
+  height: 50px;
+  background-color: #498137;
+  border: 1px solid #498137;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Button_ArrowCont__WrhN_ > svg:last-of-type {
+  top: auto;
+  bottom: 0px;
+  right: auto;
+  left: -12px;
+}
+
+.Button_Arrow__LawjV > svg path {
+  stroke: #fff;
+}
+
+.discover-list
+  .single-item:hover
+  .BlogTile_Button__SAl_F
+  div[class*="Arrow_"]
+  svg {
+  transform: rotate(-22.5deg) scale(1.4);
+}
+
+.discover-list.style-1 .single-item a:hover {
+  //transform: none;
+}
+
+.discover-list.style-1 .single-item a:hover::after {
+  //content: none;
+}
+/*
+.discover-list.style-1 .single-item a:hover .title-wrapper {
+  background: #498137;
+  padding: 10px 15px;
+  transition: 0.5s;
+}
+
+*/
