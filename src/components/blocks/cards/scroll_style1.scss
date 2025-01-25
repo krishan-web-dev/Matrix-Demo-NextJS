@@ -1,7 +1,59 @@
+.cards__scroll {
+  .single__card {
+    img {
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+    }
+
+    &:hover {
+      /*
+      img {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+        -webkit-transition: 0.2s ease-in-out;
+        transition: 0.2s ease-in-out;
+      }
+        */
+
+      transform: scale(1.1);
+      transition: 0.5s;
+      z-index: 1;
+      span {
+        &.bg {
+          background: rgba(30, 34, 40, 0)
+            linear-gradient(
+              transparent 15%,
+              #00000000 20%,
+              rgb(0 0 0 / 54%) 55%,
+              rgb(15 17 19 / 70%) 85%,
+              rgb(0 0 0 / 75%) 100%
+            )
+            repeat scroll 0 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .cards__scroll {
+    .single__card {
+      flex: calc(25% - calc(5px * 4));
+      margin: 5px;
+
+      &.rounded-md {
+        border-radius: 30px 30px 0 30px;
+      }
+    }
+  }
+}
+
 .BlogTile_Button__SAl_F {
   position: absolute;
   bottom: 0;
   right: 0;
+
+  z-index: 10;
 }
 
 .Button_Button__vVAZK {
@@ -17,7 +69,7 @@
 .Button_Button__vVAZK > span {
   display: flex;
   align-items: center;
-  overflow: hidden;
+  //overflow: hidden;
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -70,25 +122,9 @@
 }
 
 .discover-list
-  .single-item:hover
+  .single__card:hover
   .BlogTile_Button__SAl_F
   div[class*="Arrow_"]
   svg {
   transform: rotate(-22.5deg) scale(1.4);
 }
-
-.discover-list.style-1 .single-item a:hover {
-  //transform: none;
-}
-
-.discover-list.style-1 .single-item a:hover::after {
-  //content: none;
-}
-/*
-.discover-list.style-1 .single-item a:hover .title-wrapper {
-  background: #498137;
-  padding: 10px 15px;
-  transition: 0.5s;
-}
-
-*/
