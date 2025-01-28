@@ -24,7 +24,7 @@ export default function LandingPage1() {
       {/* ========== main content ========== */}
       <main className="content-wrapper">
         <ShaderSlider />
-        <section className="full__screen bg-grd-left">
+        <section className="full__screen">
           <div className="container">
             <Hero35 />
           </div>

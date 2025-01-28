@@ -31666,9 +31666,6 @@ button:focus {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
   }
-  .navbar-expand-sm .navbar-brand a img {
-    max-height: 78px;
-  }
   .navbar-expand-sm.fancy .navbar-collapse-wrapper {
     background: none !important;
     box-shadow: none !important;
@@ -31954,9 +31951,6 @@ button:focus {
   .navbar-expand-md .navbar-brand {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
-  }
-  .navbar-expand-md .navbar-brand a img {
-    max-height: 78px;
   }
   .navbar-expand-md.fancy .navbar-collapse-wrapper {
     background: none !important;
@@ -32244,9 +32238,6 @@ button:focus {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
   }
-  .navbar-expand-lg .navbar-brand a img {
-    max-height: 78px;
-  }
   .navbar-expand-lg.fancy .navbar-collapse-wrapper {
     background: none !important;
     box-shadow: none !important;
@@ -32532,9 +32523,6 @@ button:focus {
   .navbar-expand-xl .navbar-brand {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
-  }
-  .navbar-expand-xl .navbar-brand a img {
-    max-height: 78px;
   }
   .navbar-expand-xl.fancy .navbar-collapse-wrapper {
     background: none !important;
@@ -32822,9 +32810,6 @@ button:focus {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
   }
-  .navbar-expand-xxl .navbar-brand a img {
-    max-height: 78px;
-  }
   .navbar-expand-xxl.fancy .navbar-collapse-wrapper {
     background: none !important;
     box-shadow: none !important;
@@ -33107,9 +33092,6 @@ button:focus {
 .navbar-expand .navbar-brand {
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
-}
-.navbar-expand .navbar-brand a img {
-  max-height: 78px;
 }
 .navbar-expand.fancy .navbar-collapse-wrapper {
   background: none !important;
@@ -42982,7 +42964,64 @@ footer.bg-dark.angled.lower-start:after, footer.bg-dark.angled.upper-start:befor
 header {
   box-shadow: 2px 4px 2px #e1e1e1;
 }
+header .fixed.navbar-stick {
+  /*background: rgba(0, 0, 0, .05); */
+  background: rgba(255, 241, 241, 0.55);
+  border-radius: 0;
+  border: 0;
+}
 
+.bg-color-1 {
+  background: rgb(111, 142, 153);
+}
+
+.bg-color-2 {
+  background: aliceblue;
+}
+
+.bg-color-3 {
+  background: #427a33;
+}
+
+.bg-grd-left {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(222deg, rgb(255, 255, 255) 0%, rgb(63, 118, 50) 100%);
+}
+
+.bg-grd-right {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(63, 118, 50) 100%);
+}
+
+.brand-bg-default {
+  position: relative;
+  background-color: #ffffff;
+  background: linear-gradient(166deg, #ffffff, #fffddf);
+}
+
+.brand-bg-primary {
+  background-color: #75846a;
+}
+
+.brand-bg-secondary {
+  background-color: #f8f7e5;
+}
+
+.brand-bg-third {
+  background-color: #1d1d1d;
+}
+
+@keyframes background-color-animation {
+  0% {
+    background-color: #75846a;
+  }
+  25% {
+    background-color: rgb(94, 69, 108);
+  }
+  50% {
+    background-color: #75846a;
+  }
+}
 .navbar-stick {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.2);
@@ -42995,4 +43034,172 @@ header {
 
 .navbar-brand a img {
   height: 68px;
+}
+
+.bg-noise {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: url("https://brewdistrict24.com/assets/img/noise.png");
+  background-position: center center;
+  opacity: 0.2;
+}
+
+.gradient-background {
+  background: linear-gradient(166deg, #75846a, #f8f7e5);
+  background-size: 120% 120%;
+  animation: gradient-animation 12s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+section.watermark {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(346deg, #f2f3eb, #ffffff);
+}
+section.watermark::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  /* Center vertically */
+  right: -70%;
+  /* Center horizontally */
+  width: 70%;
+  /* Base size of the watermark */
+  height: 60%;
+  background-image: url("/img/watermark-color.png");
+  /* Use CSS variable for dynamic background */
+  background-size: contain;
+  /* Or 'cover', depending on your needs */
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  /* Watermark transparency */
+  transform: translate(-50%, -50%) scale(1) rotate(-15deg);
+  /* Scale and re-center */
+  z-index: 0;
+  /* Ensure it stays behind content */
+  filter: grayscale(100%) blur(1px) brightness(0.7);
+}
+
+.glass__navbar .offcanvas-nav .offcanvas-body {
+  position: relative;
+}
+@media (min-width: 992px) {
+  .glass__navbar .offcanvas-nav .offcanvas-body::after {
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: auto;
+    width: 100%;
+    bottom: 0;
+    background: #f8f7e5;
+    opacity: 1;
+    -webkit-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+    -moz-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+    -ms-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+    -o-transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+    transition: width 0.3s, left 0.3s, right 0.3s, background 0.3s, opacity 0.3s;
+  }
+}
+.glass__navbar .offcanvas-nav .offcanvas-header {
+  z-index: 99999;
+}
+@media (min-width: 992px) {
+  .glass__navbar .fixed.navbar-stick .offcanvas-body.order-1::after {
+    width: calc(100% + 20vw);
+    left: -15.9vw;
+  }
+  .glass__navbar .fixed.navbar-stick .offcanvas-body.order-3::after {
+    width: calc(100% + 20.8vw);
+    left: -5vw;
+  }
+  .glass__navbar .fixed.navbar-stick .dropdown-mega:hover .mega-menu.mega-menu {
+    margin-top: 0 !important;
+  }
+}
+.glass__navbar .navbar {
+  backdrop-filter: blur(15px);
+}
+@media (min-width: 992px) {
+  .glass__navbar .navbar .dropdown-mega:hover .mega-menu.mega-menu {
+    position: fixed;
+    /* top: 100px; */
+    left: 0;
+    width: 100vw;
+    z-index: 1050;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-expand-lg .offcanvas-nav {
+    width: 100%;
+  }
+}
+.offcanvas-header {
+  position: relative;
+  height: 75px;
+}
+.offcanvas-header a {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.full__screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.underline-3.style-3.br-green:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20205%209.37%22%3E%3Cpath%20fill%3D%22%23427a33%22%20d%3D%22M202.47%2C9.37A1191.26%2C1191.26%2C0%2C0%2C0%2C1.79%2C7.48%2C1.67%2C1.67%2C0%2C0%2C1%2C0%2C5.92H0A1.76%2C1.76%2C0%2C0%2C1%2C1.63%2C4.21c67-5.71%2C133.83-5.43%2C200.8-.27A2.75%2C2.75%2C0%2C0%2C1%2C205%2C6.88h0A2.6%2C2.6%2C0%2C0%2C1%2C202.47%2C9.37Z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.underline-3.style-2.br-yellow:after {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20208.01%208.3%22%3E%3Cpath%20fill%3D%22%23ddde2a%22%20d%3D%22M64.42%2C2.42Q42.78%2C1.46%2C21.19%2C0c-2.8-.19-4.09.89-3.87%2C2L3.92%2C1.87c-5.13-.05-5.28%2C3.87-.12%2C3.92l60.49.55c46.63%2C2.08%2C93.34%2C2.51%2C139.81%2C1.27%2C5-.13%2C5.39-3.87.13-3.92Z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.matrix h1, .matrix .h1 {
+  font-family: Candara, Arial, sans-serif;
+}
+
+.bg-grd-right h2, .bg-grd-right .h2,
+.bg-grd-right h3,
+.bg-grd-right .h3,
+.bg-grd-right p {
+  color: #202020;
+}
+
+.bg-color-3 h3, .bg-color-3 .h3 {
+  color: #fff;
+}
+
+.progress-wrap:after {
+  color: #ddde2a !important;
+}
+
+.progress-wrap svg.progress-circle path {
+  stroke: #ddde2a !important;
+}
+
+p {
+  font-family: var(--font-nunito-sans);
 }

@@ -159,13 +159,13 @@ export default function Scroll_Cards1() {
                                             </h2>
                                             <span className="sub-title">{card.subtitle}</span>
                                         </figcaption>
-                                        <div className="BlogTile_Button__SAl_F">
-                                            <div className="Button_Button__vVAZK" title="Click here">
+                                        <div className="card__link">
+                                            <div className="card__link_btn" title="Click here">
                                                 <span>
-                                                    <div className="Button_ArrowCont__WrhN_">
+                                                    <div className="card__link_btn_cont">
                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                                             <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6"></path></svg>
-                                                        <div className="Button_Arrow__LawjV">
+                                                        <div className="card__link_btn_arrow">
                                                             <svg width="31" height="28" viewBox="0 0 31 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M0.857198 13.7372L27.9141 13.7372" stroke="black" strokeWidth="3"></path>
                                                                 <path d="M15.4561 1.39417L27.9142 13.8522L15.4561 26.3104" stroke="black" strokeWidth="3"></path>

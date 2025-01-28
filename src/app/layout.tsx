@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Manrope } from "next/font/google";
+import { Inter, Nunito_Sans } from 'next/font/google'
 
 import ThemeProvider from "theme/ThemeProvider";
 
@@ -25,7 +25,17 @@ import "plugins/scrollcue/scrollCue.css";
 // BOOTSTRAP & CUSTOM CSS
 import "assets/scss/style.scss";
 
-const manrope = Manrope({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const nunito_sans = Nunito_Sans({
+  subsets: ['latin'],
+  variable: '--font-nunito-sans',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Matrix (Pvt) Ltd. | Industrial & Engineering Solutions in Sri Lanka",
@@ -34,8 +44,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={manrope.className}>
+    <html lang="en" className={`${inter.variable} ${nunito_sans.variable}`}>
+      <body>
         <ThemeProvider>{children}</ThemeProvider>
 
         {/* USED FOR SCROLL ANIMATION */}

@@ -1,3 +1,5 @@
+$hover-color: #d9df32;
+
 .cards__scroll {
   .single__card {
     img {
@@ -23,13 +25,25 @@
           background: rgba(30, 34, 40, 0)
             linear-gradient(
               transparent 15%,
-              #00000000 20%,
-              rgb(0 0 0 / 54%) 55%,
-              rgb(15 17 19 / 70%) 85%,
-              rgb(0 0 0 / 75%) 100%
+              transparent 20%,
+              rgba(30, 34, 40, 0.3) 55%,
+              rgb(30 34 40 / 86%) 85%,
+              rgb(0 0 0 / 87%) 100%
             )
             repeat scroll 0 0;
         }
+      }
+
+      .card__link_btn_arrow {
+        background-color: $hover-color;
+        border: 1px solid $hover-color;
+        svg path {
+          stroke: #131313;
+        }
+      }
+
+      .card__link div[class*="_arrow"] svg {
+        transform: rotate(-22.5deg) scale(1.4);
       }
     }
   }
@@ -48,7 +62,7 @@
   }
 }
 
-.BlogTile_Button__SAl_F {
+.card__link {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -56,7 +70,7 @@
   z-index: 10;
 }
 
-.Button_Button__vVAZK {
+.card__link_btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +80,7 @@
   cursor: pointer;
 }
 
-.Button_Button__vVAZK > span {
+.card__link_btn > span {
   display: flex;
   align-items: center;
   //overflow: hidden;
@@ -76,14 +90,14 @@
   transition: 0.15s;
 }
 
-.Button_ArrowCont__WrhN_ {
+.card__link_btn_cont {
   background-color: #f9f8f6;
   padding: 10px;
   border-radius: 50% 0 0 0;
   margin: 0 -10px -10px 0;
 }
 
-.Button_ArrowCont__WrhN_ > svg {
+.card__link_btn_cont > svg {
   display: block;
   width: 20px;
   position: absolute;
@@ -92,14 +106,14 @@
   transform: rotate(180deg) scale(1.01);
 }
 
-.Button_Arrow__LawjV > svg {
+.card__link_btn_arrow > svg {
   display: block;
   width: 14px;
   height: 14px;
   transition: 0.3s;
 }
 
-.Button_Arrow__LawjV {
+.card__link_btn_arrow {
   width: 50px;
   height: 50px;
   background-color: #498137;
@@ -110,21 +124,13 @@
   align-items: center;
 }
 
-.Button_ArrowCont__WrhN_ > svg:last-of-type {
+.card__link_btn_cont > svg:last-of-type {
   top: auto;
   bottom: 0px;
   right: auto;
   left: -12px;
 }
 
-.Button_Arrow__LawjV > svg path {
+.card__link_btn_arrow > svg path {
   stroke: #fff;
-}
-
-.discover-list
-  .single__card:hover
-  .BlogTile_Button__SAl_F
-  div[class*="Arrow_"]
-  svg {
-  transform: rotate(-22.5deg) scale(1.4);
 }
