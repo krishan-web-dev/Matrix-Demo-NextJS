@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter, Nunito_Sans } from 'next/font/google'
+import { OpinionPro, NeueHaas, PatriciaGothic } from "@/assets/fonts/custom/fonts";
 
 import ThemeProvider from "theme/ThemeProvider";
 
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${nunito_sans.variable}`}>
+    <html lang="en" className={`${OpinionPro.variable} ${NeueHaas.variable} ${PatriciaGothic.variable}`}>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
 

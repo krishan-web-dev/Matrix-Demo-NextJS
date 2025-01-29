@@ -94,7 +94,7 @@ export default function Scroll_Cards1() {
                     <div className="col-md-12 mb-10 mb-md-12">
                         {/* Scroll Card */}
                         {isCarouselEnabled ? (
-                            <div className="discover-list hm-discover-carousel grid">
+                            <div className="discover-list hm-discover-carousel grid style-1 cards__scroll">
                                 <Swiper
                                     slidesPerView={1}
                                     modules={[Navigation]}
@@ -129,17 +129,39 @@ export default function Scroll_Cards1() {
                                     </div>
                                     {cards.map((card, index) => (
                                         <SwiperSlide key={index}>
-                                            <div className="single-item box">
-                                                <a href={card.link} target="_blank" rel="noopener noreferrer">
-                                                    <div className="abs-img">
-                                                        <img src={card.img} alt={card.title} />
+                                            <figure className="overlay caption caption-overlay rounded-md single__card" key={index}>
+                                                <Link href="#">
+                                                    <Image src={card.img} alt={card.title} width={600} height={600} />
+                                                    <span className="bg" />
+                                                </Link>
+
+                                                <figcaption>
+                                                    <h2 className="post-title h3 mt-1 mb-3">
+                                                        <NextLink title={card.title} href="#" />
+                                                    </h2>
+                                                    <span className="sub-title">{card.subtitle}</span>
+                                                </figcaption>
+                                                <div className="card__link">
+                                                    <div className="card__link_btn" title="Click here">
+                                                        <span>
+                                                            <div className="card__link_btn_cont">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                                                    <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6"></path></svg>
+                                                                <div className="card__link_btn_arrow">
+                                                                    <svg width="31" height="28" viewBox="0 0 31 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M0.857198 13.7372L27.9141 13.7372" stroke="black" strokeWidth="3"></path>
+                                                                        <path d="M15.4561 1.39417L27.9142 13.8522L15.4561 26.3104" stroke="black" strokeWidth="3"></path>
+                                                                    </svg>
+                                                                </div>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                                                    <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6">
+                                                                    </path>
+                                                                </svg>
+                                                            </div>
+                                                        </span>
                                                     </div>
-                                                    <div className="title-wrapper">
-                                                        <span className="title">{card.title}</span>
-                                                        <span className="sub-title">{card.subtitle}</span>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                                </div>
+                                            </figure>
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>

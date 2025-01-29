@@ -33,7 +33,7 @@ export default function Hero35() {
             }}
           />
         </h2>
-        <p className="lead fs-18 lh-sm mb-6 pe-md-10">
+        <p className="lead fs-25 lh-sm mb-6 pe-md-10">
           As a multifaceted organization, we deliver exceptional solutions tailored to our stakeholders.
           Backed by international accreditations and aligned with global benchmarks, we are a trusted partner to industry leaders worldwide,
           driving innovation and elevating the standards of excellence in every aspect of life we touch.

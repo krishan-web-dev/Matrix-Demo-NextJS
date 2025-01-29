@@ -30,8 +30,6 @@ export default function LandingPage1() {
           </div>
         </section>
 
-        <Scroll_Cards />
-
         <Scroll_Cards1 />
 
         <section className="wrapper bg-grd-right">

@@ -51,6 +51,9 @@ $hover-color: #d9df32;
 
 @media only screen and (min-width: 1200px) {
   .cards__scroll {
+    display: flex;
+    flex-wrap: wrap;
+
     .single__card {
       flex: calc(25% - calc(5px * 4));
       margin: 5px;
