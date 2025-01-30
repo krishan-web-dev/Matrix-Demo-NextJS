@@ -12,6 +12,7 @@ import { Blog5 } from "@/components/blocks/blog";
 import Scroll_Cards from "@/components/blocks/cards/Scroll_Cards";
 import { Hero35 } from "@/components/blocks/hero";
 import Scroll_Cards1 from "@/components/blocks/cards/Scroll_Cards_style1";
+import Brands from "@/components/blocks/brands/Brands";
 
 export default function LandingPage1() {
   return (
@@ -40,6 +41,12 @@ export default function LandingPage1() {
 
         <Facts7 />
         <Clients4 />
+
+        <section className="wrapper" style={{
+          backgroundColor: "#d3e6ff"
+        }}>
+          <Brands />
+        </section>
 
         <section className="wrapper">
           <div className="container">
