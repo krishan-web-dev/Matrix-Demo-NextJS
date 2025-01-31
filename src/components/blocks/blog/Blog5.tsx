@@ -10,12 +10,12 @@ import { blogList3 } from "data/blog";
 
 export default function Blog5() {
   return (
-    <section className="wrapper bg-color-3">
+    <section className="wrapper">
       <div className="overflow-hidden">
         <div className="container py-14 py-md-16">
           <div className="row">
             <div className="col-xl-7 col-xxl-6 mx-auto text-center">
-              <h2 className="display-5 text-center mt-2 mb-10 text-white">
+              <h2 className="display-5 text-center mt-2 mb-10">
                 Insights & Updates:<br /> Explore Our Latest Blog Posts
               </h2>
             </div>

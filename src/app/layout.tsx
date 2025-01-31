@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Inter, Nunito_Sans } from 'next/font/google'
+import { Inter, Nunito_Sans, Roboto, Open_Sans } from 'next/font/google'
 import { OpinionPro, NeueHaas, PatriciaGothic } from "@/assets/fonts/custom/fonts";
 
 import ThemeProvider from "theme/ThemeProvider";
@@ -38,6 +38,19 @@ const nunito_sans = Nunito_Sans({
   display: 'swap',
 })
 
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ["100", "300", "400", "500", "700", "900"],
+  variable: '--font-roboto',
+  display: 'swap',
+})
+
+const open_sans = Open_Sans({
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: "Matrix (Pvt) Ltd. | Industrial & Engineering Solutions in Sri Lanka",
   description: "Matrix (Pvt) Ltd. offers 25+ years of expertise in industrial and engineering solutions, including compressed air systems, material handling, and turnkey services tailored to your business needs."
@@ -45,7 +58,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${OpinionPro.variable} ${NeueHaas.variable} ${PatriciaGothic.variable}`}>
+    <html lang="en" className={[OpinionPro.variable, NeueHaas.variable, PatriciaGothic.variable, nunito_sans.variable, roboto.variable, open_sans.variable].join(' ')}>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
 

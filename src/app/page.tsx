@@ -42,9 +42,7 @@ export default function LandingPage1() {
         <Facts7 />
         <Clients4 />
 
-        <section className="wrapper" style={{
-          backgroundColor: "#d3e6ff"
-        }}>
+        <section className="wrapper">
           <Brands />
         </section>
 
