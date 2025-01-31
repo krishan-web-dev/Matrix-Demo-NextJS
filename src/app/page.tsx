@@ -40,7 +40,6 @@ export default function LandingPage1() {
         </section>
 
         <Facts7 />
-        <Clients4 />
 
         <section className="wrapper">
           <Brands />
