@@ -10,7 +10,8 @@ import { blogList3 } from "data/blog";
 
 export default function Blog5() {
   return (
-    <section className="wrapper">
+    <section className="wrapper bg-grd-right">
+      <div className="bg-noise"></div>
       <div className="overflow-hidden">
         <div className="container py-14 py-md-16">
           <div className="row">

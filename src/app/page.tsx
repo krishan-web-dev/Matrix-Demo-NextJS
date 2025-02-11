@@ -33,7 +33,8 @@ export default function LandingPage1() {
 
         <Scroll_Cards1 />
 
-        <section className="wrapper bg-grd-right">
+        <section className="wrapper bg-gray">
+          <div className="bg-noise"></div>
           <div className="container py-15 py-md-17">
             <About36 />
           </div>
@@ -42,6 +43,7 @@ export default function LandingPage1() {
         <Facts7 />
 
         <section className="wrapper">
+          <div className="bg-noise"></div>
           <Brands />
         </section>
 
