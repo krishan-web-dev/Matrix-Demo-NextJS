@@ -330,3 +330,27 @@ section {
 .progress-wrap svg.progress-circle path {
   stroke: #ddde2a !important;
 }
+
+// Span Style
+.underline-def {
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: "";
+    height: 44%;
+    //background-color: #4fff83;
+    margin-left: -4%;
+    margin-right: 5%;
+    position: absolute;
+    bottom: 6%;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: linear-gradient(
+      126deg,
+      rgb(202, 215, 45) 0%,
+      rgb(167 199 153 / 76%) 100%
+    );
+  }
+}

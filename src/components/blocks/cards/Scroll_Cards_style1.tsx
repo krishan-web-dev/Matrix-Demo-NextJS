@@ -86,7 +86,7 @@ export default function Scroll_Cards1() {
                 <div className='row justify-content-md-center'>
                     <div className="col-md-6 mt-16 mt-md-18 mb-10 mb-md-12 text-center">
                         <h3 className="display-2 ls-xs mb-8">
-                            We bring <span className="underline-3 style-2 br-yellow">solutions</span> to make life easier for our customers.
+                            We bring <span className="underline-def">solutions</span> to make life easier for our customers.
                         </h3>
                     </div>
                 </div>
