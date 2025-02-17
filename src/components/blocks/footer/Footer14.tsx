@@ -7,19 +7,9 @@ import footerNav from "data/footer";
 
 export default function Footer14() {
   return (
-    <footer className="bg-dark section-frame mt-20">
-      <div className="container pb-13 pb-md-15">
-        {/* ========== newsletter section ========== */}
-        <div
-          className="card image-wrapper bg-full bg-image bg-overlay mt-n50p mx-md-5"
-          style={{ backgroundImage: "url(/img/photos/bg27.jpg)" }}>
-          <div className="card-body p-6 p-md-11 d-lg-flex flex-row align-items-lg-center justify-content-md-between text-center text-lg-start">
-            <h3 className="display-4 mb-6 mb-lg-0 pe-lg-10 pe-xl-5 pe-xxl-18 text-white">
-              We are trusted by over 500+ clients. Join them by using our services and grow your business.
-            </h3>
-            <NextLink title="Contact us" href="#" className="btn btn-lg btn-white rounded mb-0 text-nowrap" />
-          </div>
-        </div>
+    <footer className="bg-dark section-frame mt-10 mb-2">
+      <div className="container pb-13 pb-md-15 pt-md-16 pt-14">
+
 
         <div className="text-inverse mx-md-5 mt-n15 mt-lg-0">
           <div className="row gy-6 gy-lg-0">
