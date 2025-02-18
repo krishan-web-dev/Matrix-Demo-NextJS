@@ -11,7 +11,7 @@ export default function Hero35() {
         <div className="p-9 ps-0 p-xxl-11 ps-xxl-0">
           <div
             className="shape position-absolute d-block"
-            style={{ top: "0", right: "0", width: "89%", height: "100%", zIndex: 0, backgroundColor: "rgb(177 195 180)" }}
+            style={{ top: "0", right: "0", width: "89%", height: "100%", zIndex: 0, backgroundColor: "rgb(84 144 57 / 53%)" }}
           />
 
           <figure className="position-relative">

@@ -37,7 +37,7 @@ export default function LandingPage1() {
         <section className="full__screen">
           <div className="container">
             <div className="row text-center" style={animation({ name: "slideInUp", delay: "0ms" })}>
-              <div className="col-lg-10 mx-auto">
+              <div className="col-lg-12 mx-auto">
                 <div className="position-relative">
 
                   <YouTubePlayer
