@@ -299,10 +299,20 @@ section {
 
 // Fullscreen Section
 .full__screen {
-  height: 100vh;
+  //height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .container {
+    padding: 10vh 15px;
+  }
+}
+
+.reveal {
+  visibility: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 //SVG underline
