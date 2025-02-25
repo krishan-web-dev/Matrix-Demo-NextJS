@@ -198,7 +198,9 @@ export default function Scroll_Cards1() {
                                     <figure
                                         className="overlay caption caption-overlay rounded-md single__card desktop"
                                         key={index}
-                                        ref={(el) => (figuresRef.current[index] = el)}// Assigning ref for GSAP
+                                        ref={(el) => {
+                                            figuresRef.current[index] = el;
+                                        }} // Assigning ref for GSAP
                                     >
                                         <Link href="#">
                                             <Image src={card.img} alt={card.title} width={600} height={600} />
