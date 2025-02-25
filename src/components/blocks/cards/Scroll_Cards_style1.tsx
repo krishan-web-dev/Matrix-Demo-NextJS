@@ -2,7 +2,9 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from 'next/link';
 import Image from 'next/image'
 import NextLink from "@/components/reuseable/links/NextLink";
@@ -12,20 +14,44 @@ import 'swiper/css';
 //import './scroll_cards.scss';
 import './scroll_style1.scss';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Scroll_Cards1() {
+
     const [isCarouselEnabled, setIsCarouselEnabled] = useState(false);
+    const figuresRef = useRef<(HTMLElement | null)[]>([]);
 
     // Dynamically check screen size
     useEffect(() => {
-        //console.log('Current screen width:', window.innerWidth);
         const handleResize = () => {
-            setIsCarouselEnabled(window.innerWidth <= 1200); // Enable Swiper below 768px
+            setIsCarouselEnabled(window.innerWidth <= 1200);
         };
 
-        handleResize(); // Run on component mount
-        window.addEventListener('resize', handleResize);
+        handleResize();
+        window.addEventListener("resize", handleResize);
 
-        return () => window.removeEventListener('resize', handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    // GSAP Fade-In Animation for Figures (Excluding Carousel)
+    useEffect(() => {
+        gsap.fromTo(
+            figuresRef.current,
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                stagger: 0.2, // Stagger animation for smoother effect
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".hm-discover",
+                    start: "top 80%",
+                    toggleActions: "play none none reset",
+                    //once: true,
+                },
+            }
+        );
     }, []);
 
     const cards = [
@@ -169,7 +195,11 @@ export default function Scroll_Cards1() {
                         ) : (
                             <div className="discover-list hm-discover-carousel grid style-1 cards__scroll">
                                 {cards.map((card, index) => (
-                                    <figure className="overlay caption caption-overlay rounded-md single__card" key={index}>
+                                    <figure
+                                        className="overlay caption caption-overlay rounded-md single__card desktop"
+                                        key={index}
+                                        ref={(el) => (figuresRef.current[index] = el)}// Assigning ref for GSAP
+                                    >
                                         <Link href="#">
                                             <Image src={card.img} alt={card.title} width={600} height={600} />
                                             <span className="bg" />
@@ -203,9 +233,6 @@ export default function Scroll_Cards1() {
                                         </div>
                                     </figure>
                                 ))}
-
-
-
                             </div>
                         )}
                         {/* Scroll Card End */}

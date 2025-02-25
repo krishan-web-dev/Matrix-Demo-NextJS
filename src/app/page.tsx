@@ -13,7 +13,7 @@ import Scroll_Cards1 from "@/components/blocks/cards/Scroll_Cards_style1";
 import Brands from "@/components/blocks/brands/Brands";
 
 
-import animation from "utils/animation";
+
 import YouTubePlayer from "@/components/blocks/video/Video";
 
 
@@ -34,21 +34,13 @@ export default function LandingPage1() {
           </div>
         </section>
 
-        <section className="full__screen">
-          <div className="container">
-            <div className="row text-center" style={animation({ name: "slideInUp", delay: "0ms" })}>
-              <div className="col-lg-12 mx-auto">
-                <div className="position-relative">
 
-                  <YouTubePlayer
-                    videoUrl="https://youtu.be/wHc20DBUiPw?si=wTM7O2fKZ85udnJC"
-                  //thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
+        <YouTubePlayer
+          videoUrl="https://youtu.be/wHc20DBUiPw?si=wTM7O2fKZ85udnJC"
+        //thumbnail="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+        />
+
 
         <Scroll_Cards1 />
 

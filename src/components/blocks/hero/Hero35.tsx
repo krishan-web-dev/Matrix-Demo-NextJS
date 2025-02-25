@@ -82,39 +82,6 @@ export default function Hero35() {
       );
 
   }, []);
-  /*
-  useGSAP(
-    () => {
-      const text = new SplitType(".matrix p", {
-        types: "lines",
-        tagName: "div",
-        lineClass: "line",
-      });
-
-      text.lines.forEach((line) => {
-        const content = line.innerHTML;
-        line.innerHTML = `<span>${content}</span>`
-      });
-
-      gsap.set(".matrix p .line span", {
-        y: 400,
-        display: "block",
-      });
-
-      gsap.to(".matrix p .line span", {
-        y: 0,
-        duration: 2,
-        ease: "power4.out",
-        stagger: 0.075,
-        delay: 0.25
-      });
-
-      return () => {
-        if (text) text.revert();
-      };
-    },
-    { scope: paragraphRef }
-  );*/
 
   return (
     <div className="row align-items-center matrix">
