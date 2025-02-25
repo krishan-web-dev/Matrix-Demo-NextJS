@@ -66,23 +66,23 @@ export default function Hero35() {
           ease: "power3.out",
         },
         "-=0.6" // Overlap with heading animation
+      )
+
+      // Paragraph Animation
+
+      .from(
+        paragraphRef.current,
+        {
+          opacity: 0,
+          y: 80,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "-=0.5"
       );
 
-    // Paragraph Animation
-    /*
-    .from(
-      paragraphRef.current,
-      {
-        opacity: 0,
-        y: 80,
-        duration: 1,
-        ease: "power3.out",
-      },
-      "-=0.5"
-    );
-    */
   }, []);
-
+  /*
   useGSAP(
     () => {
       const text = new SplitType(".matrix p", {
@@ -114,7 +114,7 @@ export default function Hero35() {
       };
     },
     { scope: paragraphRef }
-  );
+  );*/
 
   return (
     <div className="row align-items-center matrix">
