@@ -50,12 +50,8 @@ export default function LandingPage1() {
 
         <Brands />
 
+        <Testimonial4 />
 
-        <section className="wrapper">
-          <div className="container">
-            <Testimonial4 />
-          </div>
-        </section>
 
         <Blog5 />
 

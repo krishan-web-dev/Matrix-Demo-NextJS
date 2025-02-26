@@ -1,9 +1,36 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 // CUSTOM DATA
 
 import './style.scss';
 
 export default function Brands() {
+
+  const sectionRef = useRef(null);
+
+  // GSAP Animation Hook
+  useGSAP(() => {
+    gsap.from(sectionRef.current, {
+      opacity: 0,
+      x: 100,
+      duration: 2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 85%", // Triggers when 85% of the section is visible
+        toggleActions: "play none none reset",
+        //once: true,
+      },
+    });
+  }, []);
+
   const brands = [
     {
       src: '/img/brands/kgcrane.jpg',
@@ -28,7 +55,7 @@ export default function Brands() {
     // Add more card data as needed
   ];
   return (
-    <section className="wrapper" style={{ position: "relative" }}>
+    <section ref={sectionRef} className="wrapper" style={{ position: "relative" }}>
       <div className="bg-noise"></div>
       <div className="container-fluid py-14 py-md-16 brands">
         <div className="row justify-content-md-center mb-12">
