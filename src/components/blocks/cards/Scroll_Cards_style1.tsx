@@ -42,7 +42,7 @@ export default function Scroll_Cards1() {
                 opacity: 1,
                 y: 0,
                 duration: 1,
-                stagger: 0.2, // Stagger animation for smoother effect
+                stagger: 0.3, // Stagger animation for smoother effect
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: ".hm-discover",

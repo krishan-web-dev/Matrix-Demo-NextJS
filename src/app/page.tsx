@@ -44,19 +44,12 @@ export default function LandingPage1() {
 
         <Scroll_Cards1 />
 
-        <section className="wrapper bg-gray">
-          <div className="bg-noise"></div>
-          <div className="container py-15 py-md-17">
-            <About36 />
-          </div>
-        </section>
+        <About36 />
 
         <Facts7 />
 
-        <section className="wrapper">
-          <div className="bg-noise"></div>
-          <Brands />
-        </section>
+        <Brands />
+
 
         <section className="wrapper">
           <div className="container">

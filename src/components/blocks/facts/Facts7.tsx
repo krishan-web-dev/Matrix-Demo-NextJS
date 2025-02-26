@@ -5,7 +5,7 @@ import { factList5 } from "data/facts";
 export default function Facts7() {
   return (
     <section
-      className="wrapper image-wrapper bg-image bg-overlay bg-overlay-800 text-white bg-cover"
+      className="wrapper image-wrapper bg-image bg-overlay bg-overlay-800 text-white"
       style={{ backgroundImage: 'url(/img/photos/automation-technology-use-cases.jpg)' }}
     >
       <div className="container py-14 pt-md-17 pb-md-17">
