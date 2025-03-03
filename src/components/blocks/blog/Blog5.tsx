@@ -1,5 +1,13 @@
+"use client";
+
 import dayjs from "dayjs";
 import Link from "next/link";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 // GLOBAL CUSTOM COMPONENTS
 import Carousel from "components/reuseable/Carousel";
 import NextLink from "components/reuseable/links/NextLink";
@@ -8,9 +16,30 @@ import carouselBreakpoints from "utils/carouselBreakpoints";
 // CUSTOM DATA
 import { blogList3 } from "data/blog";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Blog5() {
+
+  const sectionRef = useRef(null);
+
+  // GSAP Animation Hook
+  useGSAP(() => {
+    gsap.from(sectionRef.current, {
+      opacity: 0,
+      x: 80,
+      duration: 2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 85%", // Triggers when 85% of the section is visible
+        toggleActions: "play none none reset",
+        //once: true,
+      },
+    });
+  }, []);
+
   return (
-    <section className="wrapper bg-grd-right">
+    <section ref={sectionRef} className="wrapper bg-grd-right">
       <div className="bg-noise"></div>
       <div className="overflow-hidden">
         <div className="container py-14 py-md-16">

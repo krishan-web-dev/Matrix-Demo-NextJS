@@ -19,10 +19,6 @@ export default function Hero27() {
             <p className="lead fs-23 lh-sm mb-7 pe-lg-5 pe-xl-5 pe-xxl-0">
               We are a creative company that focuses on long term relationships with customers.
             </p>
-
-            <div>
-              <NextLink title="Read More" href="#" className="btn btn-lg btn-primary rounded" />
-            </div>
           </div>
         </div>
       </div>
