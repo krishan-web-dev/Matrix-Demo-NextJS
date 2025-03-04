@@ -3,8 +3,9 @@ import { Fragment } from "react";
 import Navbar from "components/blocks/navbar/navbar-1";
 import { Footer14 } from "components/blocks/footer";
 import { Hero27 } from "@/components/blocks/hero";
-import Scroll_Cards1 from "@/components/blocks/cards/Scroll_Cards_style1";
 import NextLink from "components/reuseable/links/NextLink";
+import Cards from "@/components/blocks/cards/cards";
+
 
 
 export default function Solutions() {
@@ -22,9 +23,7 @@ export default function Solutions() {
             <main className="content-wrapper">
 
                 <Hero27 />
-
-                <Scroll_Cards1 />
-
+                <Cards />
             </main>
 
             {/* ========== footer section ========== */}
