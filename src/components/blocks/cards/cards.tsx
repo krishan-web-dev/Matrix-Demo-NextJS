@@ -8,20 +8,20 @@ import "./cards.scss";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Cards() {
-    const sectionRef = useRef(null);
-    const wrapperRef = useRef(null);
+    // Explicitly define ref types
+    const sectionRef = useRef<HTMLDivElement | null>(null);
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const section = sectionRef.current;
-        const items = wrapperRef.current?.querySelectorAll(".item");
+        const wrapper = wrapperRef.current;
+        const items = wrapper?.querySelectorAll<HTMLDivElement>(".item");
 
-        if (!section || !items) return;
-
+        if (!section || !items || items.length === 0) return;
 
         // Initial states
         items.forEach((item, index) => {
             if (index !== 0) {
-
                 gsap.set(item, { yPercent: 100 });
             }
         });
@@ -44,7 +44,6 @@ export default function Cards() {
                 borderRadius: "10px",
             });
 
-
             if (items[index + 1]) {
                 timeline.to(items[index + 1], { yPercent: 0 }, "<");
             }
@@ -57,7 +56,6 @@ export default function Cards() {
     }, []);
 
     return (
-
         <div ref={sectionRef} className="scroll-section vertical-section section cards">
             <div ref={wrapperRef} className="wrapper">
                 <div role="list" className="list">
@@ -74,7 +72,6 @@ export default function Cards() {
                 </div>
             </div>
         </div>
-
     );
 }
 
