@@ -16,36 +16,36 @@ export default function Team() {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-12">
-                        {teams.map((team) => (
-                            <div className="creative-team--block" key={team.id}>
-                                <div className="inner-box">
-                                    <div className="image-box">
-                                        <figure className="image">
-                                            <img src={team.image} alt={team.name} />
-                                        </figure>
-                                        <div className="info-box">
-                                            <h4 className="name">{team.name}</h4>
-                                            <span className="designation">{team.designation}</span>
-                                            <span className="share-icon fa fa-share-alt"></span>
-                                            <p>{team.description}</p>
-                                            <div className="social-links">
-                                                <a href={team.twitterUrl} aria-label="Twitter">
-                                                    <i className="fab fa-twitter"></i>
-                                                </a>
-                                                <a href={team.facebookUrl} aria-label="Facebook">
-                                                    <i className="fab fa-facebook-f"></i>
-                                                </a>
-                                                <a href={team.dribbbleUrl} aria-label="Dribbble">
-                                                    <i className="fab fa-dribbble"></i>
-                                                </a>
-                                            </div>
+
+                    {teams.map((team) => (
+                        <div className="col-md-3 creative-team--block" key={team.id}>
+                            <div className="inner-box">
+                                <div className="image-box">
+                                    <figure className="image">
+                                        <img src={team.image} alt={team.name} />
+                                    </figure>
+                                    <div className="info-box">
+                                        <h4 className="name">{team.name}</h4>
+                                        <span className="designation">{team.designation}</span>
+                                        <span className="share-icon fa fa-share-alt"></span>
+                                        <p>{team.description}</p>
+                                        <div className="social-links">
+                                            <a href={team.twitterUrl} aria-label="Twitter">
+                                                <i className="fab fa-twitter"></i>
+                                            </a>
+                                            <a href={team.facebookUrl} aria-label="Facebook">
+                                                <i className="fab fa-facebook-f"></i>
+                                            </a>
+                                            <a href={team.dribbbleUrl} aria-label="Dribbble">
+                                                <i className="fab fa-dribbble"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
+
                 </div>
             </div>
         </section>
