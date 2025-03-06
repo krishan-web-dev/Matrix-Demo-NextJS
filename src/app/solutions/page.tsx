@@ -4,7 +4,8 @@ import Navbar from "components/blocks/navbar/navbar-1";
 import { Footer14 } from "components/blocks/footer";
 import { Hero27 } from "@/components/blocks/hero";
 import NextLink from "components/reuseable/links/NextLink";
-import Cards from "@/components/blocks/cards/cards";
+import Stack_Cards from "@/components/blocks/cards/Stack_Cards";
+
 
 
 
@@ -23,7 +24,8 @@ export default function Solutions() {
             <main className="content-wrapper">
 
                 <Hero27 />
-                <Cards />
+                <Stack_Cards />
+                <Hero27 />
             </main>
 
             {/* ========== footer section ========== */}

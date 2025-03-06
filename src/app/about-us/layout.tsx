@@ -2,9 +2,10 @@
 
 import { Fragment, PropsWithChildren } from "react";
 import { usePathname } from "next/navigation";
+import NextLink from "components/reuseable/links/NextLink";
 // GLOBAL CUSTOM COMPONENTS
-import { Footer17 } from "components/blocks/footer";
-import Navbar3 from "@/components/blocks/navbar/navbar-3";
+import { Footer14 } from "components/blocks/footer";
+import Navbar from "components/blocks/navbar/navbar-1";
 
 export default function AboutLayout({ children }: PropsWithChildren) {
     const pathname = usePathname();
@@ -12,14 +13,18 @@ export default function AboutLayout({ children }: PropsWithChildren) {
     return (
         <Fragment>
             {/* ========== header section ========== */}
-            <header className="wrapper bg-soft-primary glass__navbar">
-                <Navbar3 logoAlt="logo-light" stickyBox={false} />
+            {/* ========== header section ========== */}
+            <header className="wrapper bg-soft-primary my-1">
+                <Navbar
+                    button={<NextLink title="Contact Me" href="#" className="btn btn-sm btn-primary" />}
+                    navClassName="navbar navbar-expand-lg center-nav navbar-light navbar-bg-light"
+                />
             </header>
 
             <main className="content-wrapper">{children}</main>
 
             {/* ========== footer section ========== */}
-            <Footer17 />
+            <Footer14 />
         </Fragment>
     );
 }

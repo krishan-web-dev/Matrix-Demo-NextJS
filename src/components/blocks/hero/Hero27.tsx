@@ -17,7 +17,7 @@ export default function Hero27() {
               We bring solutions to make life <span className="underline-3 style-3 yellow">easier</span>
             </h2>
             <p className="lead fs-23 lh-sm mb-7 pe-lg-5 pe-xl-5 pe-xxl-0">
-              We are a creative company that focuses on long term relationships with customers.
+              Explore our innovative solutions tailored to meet your business needs. At Matrix Pvt Ltd, we provide cutting-edge technologies and expert services to help you achieve operational excellence and drive success.
             </p>
           </div>
         </div>
