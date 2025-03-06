@@ -16,8 +16,8 @@ export default function Team() {
                 </div>
                 <div className="row">
 
-                    {teams.map((team) => (
-                        <div className="col-md-3 creative-team--block" key={team.id}>
+                    {teams.map((team, index) => (
+                        <div className="col-md-3 creative-team--block" key={index}>
                             <div className="inner-box">
                                 <div className="image-box">
                                     <figure className="image">
@@ -93,6 +93,34 @@ const teams = [
         name: 'Cory Smith',
         image: '/img/avatars/t5.jpg',
         designation: 'Project Manager',
+        twitterUrl: 'https://www.twitter.com',
+        facebookUrl: 'https://www.facebook.com',
+        description: 'Fermentum massa justo sit amet risus morbi leo.'
+    },
+    {
+        id: 1,
+        name: 'Coriss Ambady',
+        image: '/img/avatars/t1.jpg',
+        designation: 'CEO',
+        twitterUrl: 'https://www.twitter.com',
+        facebookUrl: 'https://www.facebook.com',
+        description: 'Fermentum massa justo sit amet risus morbi leo.'
+    },
+    {
+        id: 2,
+        name: 'Cory Zamora',
+        image: '/img/avatars/t2.jpg',
+        designation: 'General Manager',
+        twitterUrl: 'https://www.twitter.com',
+        facebookUrl: 'https://www.facebook.com',
+        description: 'Fermentum massa justo sit amet risus morbi leo.'
+    },
+    {
+        id: 3,
+        name: 'Nikolas Brooten',
+        image: '/img/avatars/t3.jpg',
+        designation: 'Sales Manager',
+        dribbbleUrl: 'https://dribbble.com',
         twitterUrl: 'https://www.twitter.com',
         facebookUrl: 'https://www.facebook.com',
         description: 'Fermentum massa justo sit amet risus morbi leo.'
