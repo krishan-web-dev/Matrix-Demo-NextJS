@@ -1,5 +1,6 @@
 import { Hero27 } from "@/components/blocks/hero";
 import Team from "@/components/blocks/team/Team";
+import Timeline from "@/components/blocks/timeline/timeline";
 import { Fragment } from "react";
 
 const heroContent = [
@@ -17,6 +18,7 @@ export default function About_US() {
         <Fragment>
             <Hero27 heroData={heroContent} />
             <Team />
+            <Timeline />
         </Fragment>
     );
 }
