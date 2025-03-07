@@ -123,6 +123,17 @@ header {
   }
 }
 
+.glass__navbar {
+  nav {
+    &.navbar {
+      background: #fffffffc;
+      background: rgb(255 255 255 / 80%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+  }
+}
+
 //Section Background Noise
 .bg-noise {
   height: 100%;

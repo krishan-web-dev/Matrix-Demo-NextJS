@@ -1,5 +1,7 @@
 "use client";
 
+
+
 import { Fragment, ReactElement, useRef } from "react";
 import clsx from "clsx";
 // -------- CUSTOM HOOKS -------- //
@@ -79,23 +81,18 @@ export default function NavbarOne({
 
         <div className="offcanvas-body ms-lg-auto d-flex flex-column h-100">
           <ul className="navbar-nav">
-            {/* ===================== demos nav item ===================== */}
-            <DemosNavItem />
-
-            {/*  ===================== pages nav item  ===================== */}
-            <PagesNavItem />
-
-            {/* ===================== projects nav item  ===================== */}
-            <ProjectsNavItem />
-
-            {/* ===================== blog nav item ===================== */}
-            <BlogNavItem />
-
-            {/* ===================== blocks nav item ===================== */}
-            <BlocksNavItem />
-
-            {/* ===================== documentation nav item ===================== */}
-            <DocumentationNavItem />
+            <li>
+              <NextLink title="Home" href="/" className="nav-link" />
+            </li>
+            <li>
+              <NextLink title="Solutions" href="/solutions" className="nav-link" />
+            </li>
+            <li>
+              <NextLink title="About Us" href="/about-us" className="nav-link" />
+            </li>
+            <li>
+              <NextLink title="Contact Us" href="/about-us" className="nav-link" />
+            </li>
           </ul>
 
           {/* ============= show contact info in the small device sidebar ============= */}

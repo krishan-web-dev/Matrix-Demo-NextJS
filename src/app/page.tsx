@@ -3,6 +3,7 @@ import { Fragment } from "react";
 
 import { Footer14 } from "components/blocks/footer";
 import { Testimonial4 } from "components/blocks/testimonial";
+import Navbar from "components/blocks/navbar/navbar-1";
 import Navbar3 from "@/components/blocks/navbar/navbar-3";
 import { About36 } from "@/components/blocks/about";
 import ShaderSlider from "@/components/blocks/slider/Shader-Slider";
@@ -11,6 +12,7 @@ import { Blog5 } from "@/components/blocks/blog";
 import { Hero35 } from "@/components/blocks/hero";
 import Scroll_Cards1 from "@/components/blocks/cards/Scroll_Cards_style1";
 import Brands from "@/components/blocks/brands/Brands";
+import NextLink from "components/reuseable/links/NextLink";
 
 
 
@@ -22,7 +24,11 @@ export default function LandingPage1() {
     <Fragment>
       {/* ========== header ========== */}
       <header className="wrapper bg-soft-primary glass__navbar">
-        <Navbar3 logoAlt="logo-light" stickyBox={false} />
+        <Navbar
+          button={<NextLink title="Contact Me" href="#" className="btn btn-sm btn-primary" />}
+          stickyBox={true}
+          navClassName="position-absolute navbar navbar-expand-lg center-nav navbar-light navbar-bg-light"
+        />
       </header>
 
       {/* ========== main content ========== */}
