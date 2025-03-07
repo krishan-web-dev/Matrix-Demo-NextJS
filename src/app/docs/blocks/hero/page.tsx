@@ -163,7 +163,7 @@ export default function Heros() {
 
       <Block id={27}>
         <div className="pb-13 pb-md-15">
-          <All.Hero27 />
+          
         </div>
       </Block>
     </Fragment>
