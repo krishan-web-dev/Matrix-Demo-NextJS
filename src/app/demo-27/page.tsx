@@ -29,7 +29,7 @@ export default function Demo27() {
       {/* ========== main content ========== */}
       <main className="content-wrapper">
         {/* ========== hero section ========== */}
-        <Hero27 />
+        
 
         {/* ========== what we do section ========== */}
         <Services29 />
