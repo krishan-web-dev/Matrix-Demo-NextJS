@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 // CUSTOM DATA
 import data from "data/product-details-page";
+import ProductDescription from "./product-description";
 
 export default function ProductActions() {
   const [quantity, setQuantity] = useState(1);
@@ -15,14 +16,15 @@ export default function ProductActions() {
   };
 
   return (
-    <div className="col-lg-6">
+    <div className="col-lg-7">
       <div className="post-header mb-5">
         <h2 className="post-title display-5">
           <a href="#" className="link-dark">
-            Curology Skincare Set
+            Compact series screw
           </a>
         </h2>
 
+        {/* 
         <p className="price fs-20 mb-2">
           <span className="amount">$55.00</span>
         </p>
@@ -31,13 +33,15 @@ export default function ProductActions() {
           <span className="ratings four" />
           <span>(3 Reviews)</span>
         </a>
+        */}
+
       </div>
 
       <p className="mb-6">
-        Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Duis mollis, est non
-        commodo luctus. Nulla vitae elit libero pharetra augue. Donec id elit non mi porta gravida at eget metus.
+        Compact, efficient, very quiet: The space saving C series screw compressors are designed for long-term performance.
       </p>
 
+      {/*
       <form onSubmit={handleFormSubmit}>
         <fieldset className="picker">
           <legend className="h6 fs-16 text-body mb-3">Choose a size</legend>
@@ -104,6 +108,10 @@ export default function ProductActions() {
           </div>
         </div>
       </form>
+      */}
+
+      {/* ========== product description tab section ========== */}
+      <ProductDescription />
     </div>
   );
 }

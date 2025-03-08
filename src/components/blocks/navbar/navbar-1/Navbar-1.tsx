@@ -91,6 +91,9 @@ export default function NavbarOne({
               <NextLink title="About Us" href="/about-us" className="nav-link" />
             </li>
             <li>
+              <NextLink title="Single Product" href="/products/1" className="nav-link" />
+            </li>
+            <li>
               <NextLink title="Contact Us" href="/about-us" className="nav-link" />
             </li>
           </ul>
