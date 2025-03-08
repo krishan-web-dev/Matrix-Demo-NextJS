@@ -24,11 +24,7 @@ export default function LandingPage1() {
     <Fragment>
       {/* ========== header ========== */}
       <header className="wrapper bg-soft-primary glass__navbar">
-        <Navbar
-          button={<NextLink title="Contact Us" href="#" className="btn btn-sm btn-primary" />}
-          stickyBox={true}
-          navClassName="position-absolute navbar navbar-expand-lg center-nav navbar-light navbar-bg-light"
-        />
+        <Navbar3 logoAlt="logo-light" stickyBox={false} />
       </header>
 
       {/* ========== main content ========== */}

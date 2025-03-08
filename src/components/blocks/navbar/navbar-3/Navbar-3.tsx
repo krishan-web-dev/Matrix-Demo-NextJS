@@ -86,27 +86,30 @@ export default function Navbar3({
 
               <div className="w-100 order-1 order-lg-0 d-lg-flex offcanvas-body">
                 <div className="navbar-nav ms-lg-auto">
-                  {/* ===================== demos nav item ===================== */}
-                  {/*<DemosNavItem /> */}
-
-                  {/*  ===================== pages nav item  ===================== */}
-                  {/*<PagesNavItem /> */}
-
-                  {/* ===================== projects nav item  ===================== */}
-                  <ProjectsNavItem />
+                  <ul className="navbar-nav">
+                    <li>
+                      <NextLink title="Home" href="/" className="nav-link" />
+                    </li>
+                    <li>
+                      <NextLink title="Solutions" href="/solutions" className="nav-link" />
+                    </li>
+                    <li>
+                      <NextLink title="About Us" href="/about-us" className="nav-link" />
+                    </li>
+                  </ul>
                 </div>
               </div>
 
               <div className="w-100 order-3 order-lg-2 d-lg-flex offcanvas-body">
                 <div className="navbar-nav me-lg-auto">
-                  {/* ===================== blog nav item ===================== */}
-                  <BlogNavItem />
-
-                  {/* ===================== block nav item ===================== */}
-                  {/*<BlocksNavItem /> *}
-
-                  {/* ===================== documentation nav item ===================== */}
-                  {/*<DocumentationNavItem /> */}
+                  <ul className="navbar-nav">
+                    <li>
+                      <NextLink title="Single Product" href="/products/1" className="nav-link" />
+                    </li>
+                    <li>
+                      <NextLink title="Contact Us" href="/about-us" className="nav-link" />
+                    </li>
+                  </ul>
                 </div>
               </div>
 
