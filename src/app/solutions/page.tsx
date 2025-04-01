@@ -5,6 +5,7 @@ import { Footer14 } from "components/blocks/footer";
 import { Hero27 } from "@/components/blocks/hero";
 import NextLink from "components/reuseable/links/NextLink";
 import Stack_Cards from "@/components/blocks/cards/Stack_Cards";
+import ServiceCards from "@/components/blocks/cards/Service_Cards";
 
 const heroContent = [
     {
@@ -32,7 +33,8 @@ export default function Solutions() {
             <main className="content-wrapper">
 
                 <Hero27 heroData={heroContent} />
-                <Stack_Cards />
+                <ServiceCards />
+
                 <Hero27 heroData={heroContent} />
             </main>
 
