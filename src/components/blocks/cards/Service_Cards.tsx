@@ -20,6 +20,8 @@ export default function StackedCardsComponent() {
     const menuItemsRef = useRef<(HTMLSpanElement | null)[]>([]);
     const menuRef = useRef<HTMLDivElement>(null);
     const [menuHeight, setMenuHeight] = useState(0);
+    const timelineRef = useRef<gsap.core.Timeline | null>(null);
+    const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
 
     const cards = [
         {
@@ -113,6 +115,35 @@ export default function StackedCardsComponent() {
         };
     }, []);
 
+    const scrollToSection = (targetId: string) => {
+        const targetIndex = cards.findIndex(card => card.id === targetId);
+        if (targetIndex === -1 || !timelineRef.current) return;
+
+        // Calculate the progress (0 to 1) based on card index
+        const progress = targetIndex / (cards.length - 1);
+
+        // Animate the timeline to this position
+        gsap.to(timelineRef.current, {
+            duration: 0.8,
+            progress: progress,
+            ease: "power2.out",
+            onUpdate: () => {
+                if (scrollTriggerRef.current) {
+                    scrollTriggerRef.current.scroll(scrollTriggerRef.current.start);
+                }
+            },
+            onComplete: () => {
+                menuItemsRef.current.forEach((item, index) => {
+                    if (item) {
+                        item.style.borderBottom = index === targetIndex
+                            ? "1px solid #667085"
+                            : "1px solid transparent";
+                    }
+                });
+            }
+        });
+    };
+
     useEffect(() => {
         if (menuHeight === 0) return;
 
@@ -138,7 +169,7 @@ export default function StackedCardsComponent() {
                 }
             });
 
-            let tl = gsap.timeline({
+            const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".panel",
                     fastScrollEnd: true,
@@ -147,10 +178,23 @@ export default function StackedCardsComponent() {
                     end: `+=${totalDuration}`,
                     pinSpacing: true,
                     scrub: 0.2,
-                    markers: true,
-                    id: "panel-timeline"
+                    markers: false,
+                    id: "panel-timeline",
+                    onUpdate: (self) => {
+                        const activeIndex = Math.floor(self.progress * (cards.length - 1));
+                        menuItemsRef.current.forEach((item, index) => {
+                            if (item) {
+                                item.style.borderBottom = index === activeIndex
+                                    ? "1px solid #667085"
+                                    : "1px solid transparent";
+                            }
+                        });
+                    }
                 }
             });
+
+            timelineRef.current = tl;
+            scrollTriggerRef.current = ScrollTrigger.getById("panel-timeline") || null;
 
             cardsElements.forEach((card, index) => {
                 const label = cards[index].id;
@@ -171,11 +215,6 @@ export default function StackedCardsComponent() {
                         duration: 0.3
                     }, label);
                 });
-
-                tl.set(menuItems[index], { borderBottom: "1px solid #667085" }, label);
-                if (index > 0) {
-                    tl.set(menuItems[index - 1], { borderBottom: "1px solid transparent" }, label);
-                }
             });
 
             return () => {
@@ -188,28 +227,6 @@ export default function StackedCardsComponent() {
             sm.revert();
         };
     }, [menuHeight, cards]);
-
-    const scrollToSection = (targetId: string) => {
-        const targetCard = document.getElementById(targetId);
-        if (!targetCard) return;
-
-        gsap.to(window, {
-            duration: 0.6,
-            scrollTo: { y: targetCard.offsetTop - menuHeight },
-            ease: "power2.out",
-        });
-
-        // Highlight selected menu item
-        menuItemsRef.current.forEach((item) => {
-            if (item?.dataset.target === targetId) {
-                item.classList.add("active");
-            } else {
-                item?.classList.remove("active");
-            }
-        });
-    };
-
-
 
     return (
         <section
@@ -234,21 +251,20 @@ export default function StackedCardsComponent() {
                                     id={`menu-item-${item.id}`}
                                     ref={el => { menuItemsRef.current[index] = el }}
                                     data-target={item.id}
-                                    className={index === 0 ? 'active' : ''}
+                                    style={{ borderBottom: index === 0 ? '1px solid #667085' : '1px solid transparent' }}
                                     role="button"
                                     onClick={() => scrollToSection(item.id)}
                                 >
                                     {item.title}
                                 </span>
                             ))}
-
                         </div>
 
                         <div className="panel__stack" ref={panelStackRef}>
                             {cards.map((card, index) => (
                                 <div
                                     key={card.id}
-                                    id={card.id} // Ensures the ID is properly assigned
+                                    id={card.id}
                                     className={`panel__card panel__card--${index + 1} overflow-hidden`}
                                     ref={el => { cardsRef.current[index] = el }}
                                     style={{ backgroundColor: card.bgColor }}
@@ -265,7 +281,6 @@ export default function StackedCardsComponent() {
                                     </div>
                                 </div>
                             ))}
-
                         </div>
                     </div>
                 </div>
