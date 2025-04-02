@@ -108,43 +108,112 @@ export default function StackedCardsComponent() {
         };
     }, []);
 
-    const scrollToSection = (targetIndex: number) => {
-        if (isAnimating || targetIndex < 0 || targetIndex >= cards.length || !scrollTriggerRef.current) return;
-
-        setIsAnimating(true);
-        ScrollTrigger.getAll().forEach(st => st.disable());
-
-        const sectionProgress = targetIndex / (cards.length - 1);
-        const scrollPosition = scrollTriggerRef.current.start + (sectionProgress * (scrollTriggerRef.current.end - scrollTriggerRef.current.start));
-
-        // Update menu item immediately
+    const updateActiveMenuItem = (activeIndex: number) => {
         menuItemsRef.current.forEach((item, index) => {
             if (item) {
-                item.style.borderBottom = index === targetIndex
+                item.style.borderBottom = index === activeIndex
                     ? "1px solid #667085"
                     : "1px solid transparent";
             }
         });
+    };
 
-        gsap.killTweensOf(window);
+    const createScrollTrigger = () => {
+        const cardsElements = cardsRef.current.filter(Boolean) as HTMLDivElement[];
+        const menuItems = menuItemsRef.current.filter(Boolean) as HTMLSpanElement[];
+
+        if (cardsElements.length === 0 || menuItems.length === 0) return;
+
+        const totalDuration = 500 * cardsElements.length;
+
+        gsap.set(menuItems[0], { borderBottom: "1px solid #667085" });
+
+        gsap.set(panelStackRef.current, {
+            height: () => {
+                const offset = 20;
+                const firstCardHeight = cardsElements[0].offsetHeight;
+                return firstCardHeight + (cardsElements.length * offset);
+            }
+        });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".panel",
+                pin: true,
+                start: `top ${menuHeight + 50}px`,
+                end: () => `+=${totalDuration}`,
+                scrub: 0.2,
+                markers: false,
+                id: "panel-timeline",
+                onUpdate: (self) => {
+                    if (isAnimating) return;
+                    const activeIndex = Math.min(
+                        Math.floor(self.progress * (cards.length - 1)),
+                        cards.length - 1
+                    );
+                    updateActiveMenuItem(activeIndex);
+                },
+                onRefresh: () => {
+                    if (panelStackRef.current) {
+                        panelStackRef.current.style.position = '';
+                        panelStackRef.current.style.top = '';
+                    }
+                }
+            }
+        });
+
+        timelineRef.current = tl;
+        scrollTriggerRef.current = ScrollTrigger.getById("panel-timeline") || null;
+
+        cardsElements.forEach((card, index) => {
+            const label = getCardId(index);
+            const prevLabels = cards.slice(0, index).map((_, i) => getCardId(i));
+
+            if (index > 0) {
+                tl.from(card, { y: () => window.innerHeight }, label);
+            }
+
+            tl.to(card, {
+                scale: 1,
+                duration: 0.3
+            }, label);
+
+            prevLabels.forEach((prevLabel, prevIndex) => {
+                tl.to(cardsElements[prevIndex], {
+                    scale: 1 - (0.05 * (index - prevIndex)),
+                    duration: 0.3
+                }, label);
+            });
+        });
+
+        return () => {
+            tl.kill();
+            ScrollTrigger.getAll().forEach(instance => instance.kill());
+        };
+    };
+
+    const handleCardNavigation = (targetIndex: number) => {
+        if (isAnimating || targetIndex < 0 || targetIndex >= cards.length || !scrollTriggerRef.current) return;
+
+        setIsAnimating(true);
+        ScrollTrigger.getAll().forEach(st => st.kill());
+
+        updateActiveMenuItem(targetIndex);
+
+        const sectionHeight = scrollTriggerRef.current.end - scrollTriggerRef.current.start;
+        const targetScroll = scrollTriggerRef.current.start + (targetIndex / (cards.length - 1)) * sectionHeight;
+
+        if (timelineRef.current) {
+            timelineRef.current.progress(targetIndex / (cards.length - 1));
+        }
 
         gsap.to(window, {
-            scrollTo: {
-                y: scrollPosition,
-                autoKill: false
-            },
+            scrollTo: targetScroll,
             duration: 0.8,
             ease: "power2.out",
             onComplete: () => {
-                if (timelineRef.current) {
-                    timelineRef.current.progress(sectionProgress);
-                }
-
-                setTimeout(() => {
-                    ScrollTrigger.getAll().forEach(st => st.enable());
-                    ScrollTrigger.refresh();
-                    setIsAnimating(false);
-                }, 100);
+                createScrollTrigger();
+                setIsAnimating(false);
             }
         });
     };
@@ -153,82 +222,12 @@ export default function StackedCardsComponent() {
         if (menuHeight === 0) return;
 
         gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
-
         const sm = gsap.matchMedia();
 
         sm.add("(min-width: 320px)", () => {
-            const cardsElements = cardsRef.current.filter(Boolean) as HTMLDivElement[];
-            const menuItems = menuItemsRef.current.filter(Boolean) as HTMLSpanElement[];
-
-            if (cardsElements.length === 0 || menuItems.length === 0) return;
-
-            const totalDuration = 500 * cardsElements.length;
-
-            gsap.set(menuItems[0], { borderBottom: "1px solid #667085" });
-
-            gsap.set(panelStackRef.current, {
-                height: () => {
-                    const offset = 20;
-                    const firstCardHeight = cardsElements[0].offsetHeight;
-                    return firstCardHeight + (cardsElements.length * offset);
-                }
-            });
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".panel",
-                    pin: true,
-                    start: `top ${menuHeight + 50}px`,
-                    end: () => `+=${totalDuration}`,
-                    scrub: 0.2,
-                    markers: false,
-                    id: "panel-timeline",
-                    onUpdate: (self) => {
-                        if (isAnimating) return;
-                        const activeIndex = Math.min(Math.floor(self.progress * (cards.length - 1)), cards.length - 1);
-                        menuItemsRef.current.forEach((item, index) => {
-                            if (item) {
-                                item.style.borderBottom = index === activeIndex
-                                    ? "1px solid #667085"
-                                    : "1px solid transparent";
-                            }
-                        });
-                    },
-                    onRefresh: () => {
-                        if (panelStackRef.current) {
-                            panelStackRef.current.style.position = '';
-                            panelStackRef.current.style.top = '';
-                        }
-                    }
-                }
-            });
-
-            timelineRef.current = tl;
-            scrollTriggerRef.current = ScrollTrigger.getById("panel-timeline") || null;
-
-            cardsElements.forEach((card, index) => {
-                const label = getCardId(index);
-                const prevLabels = cards.slice(0, index).map((_, i) => getCardId(i));
-
-                if (index > 0) {
-                    tl.from(card, { y: () => window.innerHeight }, label);
-                }
-
-                tl.to(card, {
-                    scale: 1,
-                    duration: 0.3
-                }, label);
-
-                prevLabels.forEach((prevLabel, prevIndex) => {
-                    tl.to(cardsElements[prevIndex], {
-                        scale: 1 - (0.05 * (index - prevIndex)),
-                        duration: 0.3
-                    }, label);
-                });
-            });
-
+            createScrollTrigger();
             return () => {
-                tl.kill();
+                if (timelineRef.current) timelineRef.current.kill();
                 ScrollTrigger.getAll().forEach(instance => instance.kill());
             };
         });
@@ -236,7 +235,7 @@ export default function StackedCardsComponent() {
         return () => {
             sm.revert();
         };
-    }, [menuHeight, cards, isAnimating]);
+    }, [menuHeight, cards]);
 
     return (
         <section
@@ -263,7 +262,7 @@ export default function StackedCardsComponent() {
                                     data-target={getCardId(index)}
                                     style={{ borderBottom: index === 0 ? '1px solid #667085' : '1px solid transparent' }}
                                     role="button"
-                                    onClick={() => scrollToSection(index)}
+                                    onClick={() => handleCardNavigation(index)}
                                 >
                                     {item.title}
                                 </span>
