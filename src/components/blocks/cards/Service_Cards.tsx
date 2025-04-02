@@ -6,7 +6,6 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 type CardType = {
-    id: string;
     img: string;
     title: string;
     subtitle: string;
@@ -22,10 +21,10 @@ export default function StackedCardsComponent() {
     const [menuHeight, setMenuHeight] = useState(0);
     const timelineRef = useRef<gsap.core.Timeline | null>(null);
     const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     const cards = [
         {
-            id: 'b',
             img: "/img/fork-lift.jpg",
             title: "Compressed Air Solutions",
             subtitle: "Specializing in material handling solutions with quality, safety, and value.",
@@ -33,7 +32,6 @@ export default function StackedCardsComponent() {
             link: "#",
         },
         {
-            id: 'c',
             img: "/img/car-parking.jpg",
             title: "Material Handling Equipment",
             subtitle: "Advanced farming solutions for a sustainable future",
@@ -41,7 +39,6 @@ export default function StackedCardsComponent() {
             link: "#",
         },
         {
-            id: 'd',
             img: "/img/auto-mobile-equipment.jpg",
             title: "Automobile Maintenance Equipment",
             subtitle: "Specializing in material handling solutions with quality, safety, and value.",
@@ -49,7 +46,6 @@ export default function StackedCardsComponent() {
             link: "#",
         },
         {
-            id: 'e',
             img: "/img/car-parking.jpg",
             title: "Car Parking Solutions",
             subtitle: "Advanced farming solutions for a sustainable future",
@@ -57,7 +53,6 @@ export default function StackedCardsComponent() {
             link: "#",
         },
         {
-            id: 'f',
             img: "/img/fork-lift.jpg",
             title: "Elevators & Escalators",
             subtitle: "Specializing in material handling solutions with quality, safety, and value.",
@@ -65,7 +60,6 @@ export default function StackedCardsComponent() {
             link: "#",
         },
         {
-            id: 'g',
             img: "/img/auto-mobile-equipment.jpg",
             title: "Welding Products",
             subtitle: "Advanced farming solutions for a sustainable future",
@@ -73,7 +67,6 @@ export default function StackedCardsComponent() {
             link: "#",
         },
         {
-            id: 'h',
             img: "/img/fork-lift.jpg",
             title: "After Care & Rental",
             subtitle: "Specializing in material handling solutions with quality, safety, and value.",
@@ -81,7 +74,6 @@ export default function StackedCardsComponent() {
             link: "#",
         },
         {
-            id: 'i',
             img: "/img/auto-mobile-equipment.jpg",
             title: "Solar Systems",
             subtitle: "Advanced farming solutions for a sustainable future",
@@ -90,7 +82,8 @@ export default function StackedCardsComponent() {
         },
     ];
 
-    // Initialize ref arrays
+    const getCardId = (index: number) => `card-${index}`;
+
     useEffect(() => {
         cardsRef.current = cardsRef.current.slice(0, cards.length);
         menuItemsRef.current = menuItemsRef.current.slice(0, cards.length);
@@ -115,31 +108,43 @@ export default function StackedCardsComponent() {
         };
     }, []);
 
-    const scrollToSection = (targetId: string) => {
-        const targetIndex = cards.findIndex(card => card.id === targetId);
-        if (targetIndex === -1 || !timelineRef.current) return;
+    const scrollToSection = (targetIndex: number) => {
+        if (isAnimating || targetIndex < 0 || targetIndex >= cards.length || !scrollTriggerRef.current) return;
 
-        // Calculate the progress (0 to 1) based on card index
-        const progress = targetIndex / (cards.length - 1);
+        setIsAnimating(true);
+        ScrollTrigger.getAll().forEach(st => st.disable());
 
-        // Animate the timeline to this position
-        gsap.to(timelineRef.current, {
-            duration: 0.8,
-            progress: progress,
-            ease: "power2.out",
-            onUpdate: () => {
-                if (scrollTriggerRef.current) {
-                    scrollTriggerRef.current.scroll(scrollTriggerRef.current.start);
-                }
+        const sectionProgress = targetIndex / (cards.length - 1);
+        const scrollPosition = scrollTriggerRef.current.start + (sectionProgress * (scrollTriggerRef.current.end - scrollTriggerRef.current.start));
+
+        // Update menu item immediately
+        menuItemsRef.current.forEach((item, index) => {
+            if (item) {
+                item.style.borderBottom = index === targetIndex
+                    ? "1px solid #667085"
+                    : "1px solid transparent";
+            }
+        });
+
+        gsap.killTweensOf(window);
+
+        gsap.to(window, {
+            scrollTo: {
+                y: scrollPosition,
+                autoKill: false
             },
+            duration: 0.8,
+            ease: "power2.out",
             onComplete: () => {
-                menuItemsRef.current.forEach((item, index) => {
-                    if (item) {
-                        item.style.borderBottom = index === targetIndex
-                            ? "1px solid #667085"
-                            : "1px solid transparent";
-                    }
-                });
+                if (timelineRef.current) {
+                    timelineRef.current.progress(sectionProgress);
+                }
+
+                setTimeout(() => {
+                    ScrollTrigger.getAll().forEach(st => st.enable());
+                    ScrollTrigger.refresh();
+                    setIsAnimating(false);
+                }, 100);
             }
         });
     };
@@ -172,16 +177,15 @@ export default function StackedCardsComponent() {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".panel",
-                    fastScrollEnd: true,
                     pin: true,
                     start: `top ${menuHeight + 50}px`,
-                    end: `+=${totalDuration}`,
-                    pinSpacing: true,
+                    end: () => `+=${totalDuration}`,
                     scrub: 0.2,
                     markers: false,
                     id: "panel-timeline",
                     onUpdate: (self) => {
-                        const activeIndex = Math.floor(self.progress * (cards.length - 1));
+                        if (isAnimating) return;
+                        const activeIndex = Math.min(Math.floor(self.progress * (cards.length - 1)), cards.length - 1);
                         menuItemsRef.current.forEach((item, index) => {
                             if (item) {
                                 item.style.borderBottom = index === activeIndex
@@ -189,6 +193,12 @@ export default function StackedCardsComponent() {
                                     : "1px solid transparent";
                             }
                         });
+                    },
+                    onRefresh: () => {
+                        if (panelStackRef.current) {
+                            panelStackRef.current.style.position = '';
+                            panelStackRef.current.style.top = '';
+                        }
                     }
                 }
             });
@@ -197,8 +207,8 @@ export default function StackedCardsComponent() {
             scrollTriggerRef.current = ScrollTrigger.getById("panel-timeline") || null;
 
             cardsElements.forEach((card, index) => {
-                const label = cards[index].id;
-                const prevLabels = cards.slice(0, index).map(card => card.id);
+                const label = getCardId(index);
+                const prevLabels = cards.slice(0, index).map((_, i) => getCardId(i));
 
                 if (index > 0) {
                     tl.from(card, { y: () => window.innerHeight }, label);
@@ -226,7 +236,7 @@ export default function StackedCardsComponent() {
         return () => {
             sm.revert();
         };
-    }, [menuHeight, cards]);
+    }, [menuHeight, cards, isAnimating]);
 
     return (
         <section
@@ -247,13 +257,13 @@ export default function StackedCardsComponent() {
                         >
                             {cards.map((item, index) => (
                                 <span
-                                    key={item.id}
-                                    id={`menu-item-${item.id}`}
+                                    key={index}
+                                    id={`menu-item-${getCardId(index)}`}
                                     ref={el => { menuItemsRef.current[index] = el }}
-                                    data-target={item.id}
+                                    data-target={getCardId(index)}
                                     style={{ borderBottom: index === 0 ? '1px solid #667085' : '1px solid transparent' }}
                                     role="button"
-                                    onClick={() => scrollToSection(item.id)}
+                                    onClick={() => scrollToSection(index)}
                                 >
                                     {item.title}
                                 </span>
@@ -263,8 +273,8 @@ export default function StackedCardsComponent() {
                         <div className="panel__stack" ref={panelStackRef}>
                             {cards.map((card, index) => (
                                 <div
-                                    key={card.id}
-                                    id={card.id}
+                                    key={index}
+                                    id={getCardId(index)}
                                     className={`panel__card panel__card--${index + 1} overflow-hidden`}
                                     ref={el => { cardsRef.current[index] = el }}
                                     style={{ backgroundColor: card.bgColor }}
@@ -294,6 +304,7 @@ export default function StackedCardsComponent() {
                     flex-direction: column;
                     align-items: center;
                     min-height: 600px;
+                    transition: none !important;
                 }
 
                 .panel__card {

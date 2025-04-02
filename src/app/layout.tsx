@@ -26,6 +26,8 @@ import "plugins/scrollcue/scrollCue.css";
 // BOOTSTRAP & CUSTOM CSS
 import "assets/scss/style.scss";
 
+import { ReactLenis } from '@/utils/lenis';
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -60,7 +62,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={[OpinionPro.variable, NeueHaas.variable, PatriciaGothic.variable, nunito_sans.variable, roboto.variable, open_sans.variable].join(' ')}>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ReactLenis root>
+          <ThemeProvider>{children}</ThemeProvider>
+        </ReactLenis>
 
         {/* USED FOR SCROLL ANIMATION */}
         <ScrollCue />
