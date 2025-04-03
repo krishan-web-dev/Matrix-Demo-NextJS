@@ -79,44 +79,52 @@ const PanelComponent = () => {
         },
     ]
 
-    // Create targets for GSAP (b, c, d, e, etc.)
-    const cardTargets = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'].slice(0, cards.length)
+    const cardTargets = Array.from({ length: cards.length }, (_, i) =>
+        String.fromCharCode(97 + i)
+    )
 
     useEffect(() => {
-        if (typeof window === 'undefined') return
+        if (typeof window === 'undefined') return;
 
-        const sm = gsap.matchMedia()
+        const sm = gsap.matchMedia();
 
         sm.add('(min-width: 1130px)', () => {
-            const images = gsap.utils.toArray('.panel__card')
-            const endTime = 500 * images.length
+            const images = gsap.utils.toArray('.panel__card');
+            const endTime = 500 * images.length;
+
+            // Get the navigation bar height dynamically
+            const navBar = document.querySelector('.panel__options');
+            const navHeight = navBar?.clientHeight || 0;
+            const navMarginBottom = parseInt(getComputedStyle(navBar!).marginBottom) || 0;
+            const totalNavHeight = navHeight + navMarginBottom;
 
             gsap.set(stackRef.current, {
                 height: () => {
-                    const offset = 20
-                    const cards = document.querySelectorAll('.panel__card')
-                    const height = cards[0]?.clientHeight || 0
-                    return height + cards.length * offset
+                    const offset = 20;
+                    const cards = document.querySelectorAll('.panel__card');
+                    const height = cards[0]?.clientHeight || 0;
+                    return height + cards.length * offset;
                 },
-            })
+            });
 
             let tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: panelRef.current,
                     fastScrollEnd: true,
                     pin: true,
-                    start: '50% 370px',
+                    start: `top ${totalNavHeight}px`,
                     end: `+=${endTime}px`,
                     pinSpacing: true,
                     scrub: 0.2,
                     markers: false,
                 },
-            })
+            });
 
             // Setup initial active tab
             tl.set('.panel__options > span:nth-child(1)', {
                 borderBottom: '1px solid #667085',
             })
+
 
             // Create animations for each card
             cards.forEach((_, index) => {
@@ -166,16 +174,18 @@ const PanelComponent = () => {
             })
 
             function gotSeek(id: string) {
+                if (!tl.scrollTrigger) return; // Add this check
+
                 gsap.to(window, {
                     duration: 0.3,
-                    scrollTo: { y: tl.scrollTrigger?.labelToScroll(id) + 10 },
+                    scrollTo: { y: tl.scrollTrigger.labelToScroll(id) + 10 },
                     ease: 'power2.out',
-                })
+                });
                 tl.tweenTo(id, {
                     duration: 0.3,
                     onComplete: function () { },
                     ease: 'power2.out',
-                })
+                });
             }
 
             const links = gsap.utils.toArray('.panel__options span')
