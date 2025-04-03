@@ -1,29 +1,26 @@
-'use client';
+'use client'
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
-type CardType = {
-    img: string;
-    title: string;
-    subtitle: string;
-    bgColor: string;
-    link: string;
-};
+interface PanelCard {
+    img: string
+    title: string
+    subtitle: string
+    bgColor: string
+    link: string
+}
 
-export default function StackedCardsComponent() {
-    const panelStackRef = useRef<HTMLDivElement>(null);
-    const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-    const menuItemsRef = useRef<(HTMLSpanElement | null)[]>([]);
-    const menuRef = useRef<HTMLDivElement>(null);
-    const [menuHeight, setMenuHeight] = useState(0);
-    const timelineRef = useRef<gsap.core.Timeline | null>(null);
-    const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
-    const [isAnimating, setIsAnimating] = useState(false);
+const PanelComponent = () => {
+    const panelRef = useRef<HTMLDivElement>(null)
+    const stackRef = useRef<HTMLDivElement>(null)
+    const optionsRef = useRef<HTMLDivElement>(null)
 
-    const cards = [
+    // Your provided dataset
+    const cards: PanelCard[] = [
         {
             img: "/img/fork-lift.jpg",
             title: "Compressed Air Solutions",
@@ -80,213 +77,187 @@ export default function StackedCardsComponent() {
             bgColor: "#FAF2D3",
             link: "#",
         },
-    ];
+    ]
 
-    const getCardId = (index: number) => `card-${index}`;
-
-    useEffect(() => {
-        cardsRef.current = cardsRef.current.slice(0, cards.length);
-        menuItemsRef.current = menuItemsRef.current.slice(0, cards.length);
-    }, [cards]);
+    // Create targets for GSAP (b, c, d, e, etc.)
+    const cardTargets = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'].slice(0, cards.length)
 
     useEffect(() => {
-        const updateMenuHeight = () => {
-            if (menuRef.current) {
-                const height = menuRef.current.offsetHeight;
-                setMenuHeight(height);
-            }
-        };
+        if (typeof window === 'undefined') return
 
-        updateMenuHeight();
-        const resizeObserver = new ResizeObserver(updateMenuHeight);
-        if (menuRef.current) {
-            resizeObserver.observe(menuRef.current);
-        }
+        const sm = gsap.matchMedia()
 
-        return () => {
-            resizeObserver.disconnect();
-        };
-    }, []);
+        sm.add('(min-width: 1130px)', () => {
+            const images = gsap.utils.toArray('.panel__card')
+            const endTime = 500 * images.length
 
-    const updateActiveMenuItem = (activeIndex: number) => {
-        menuItemsRef.current.forEach((item, index) => {
-            if (item) {
-                item.style.borderBottom = index === activeIndex
-                    ? "1px solid #667085"
-                    : "1px solid transparent";
-            }
-        });
-    };
-
-    const createScrollTrigger = () => {
-        const cardsElements = cardsRef.current.filter(Boolean) as HTMLDivElement[];
-        const menuItems = menuItemsRef.current.filter(Boolean) as HTMLSpanElement[];
-
-        if (cardsElements.length === 0 || menuItems.length === 0) return;
-
-        const totalDuration = 500 * cardsElements.length;
-
-        gsap.set(menuItems[0], { borderBottom: "1px solid #667085" });
-
-        gsap.set(panelStackRef.current, {
-            height: () => {
-                const offset = 20;
-                const firstCardHeight = cardsElements[0].offsetHeight;
-                return firstCardHeight + (cardsElements.length * offset);
-            }
-        });
-
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".panel",
-                pin: true,
-                start: `top ${menuHeight + 50}px`,
-                end: () => `+=${totalDuration}`,
-                scrub: 0.2,
-                markers: false,
-                id: "panel-timeline",
-                onUpdate: (self) => {
-                    if (isAnimating) return;
-                    const activeIndex = Math.min(
-                        Math.floor(self.progress * (cards.length - 1)),
-                        cards.length - 1
-                    );
-                    updateActiveMenuItem(activeIndex);
+            gsap.set(stackRef.current, {
+                height: () => {
+                    const offset = 20
+                    const cards = document.querySelectorAll('.panel__card')
+                    const height = cards[0]?.clientHeight || 0
+                    return height + cards.length * offset
                 },
-                onRefresh: () => {
-                    if (panelStackRef.current) {
-                        panelStackRef.current.style.position = '';
-                        panelStackRef.current.style.top = '';
-                    }
+            })
+
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: panelRef.current,
+                    fastScrollEnd: true,
+                    pin: true,
+                    start: '50% 370px',
+                    end: `+=${endTime}px`,
+                    pinSpacing: true,
+                    scrub: 0.2,
+                    markers: false,
+                },
+            })
+
+            // Setup initial active tab
+            tl.set('.panel__options > span:nth-child(1)', {
+                borderBottom: '1px solid #667085',
+            })
+
+            // Create animations for each card
+            cards.forEach((_, index) => {
+                const target = cardTargets[index]
+                const prevTarget = index > 0 ? cardTargets[index - 1] : null
+
+                if (index > 0) {
+                    // For cards after the first one
+                    tl.set(`.panel__options > span:nth-child(${index})`, {
+                        borderBottom: '1px solid transparent',
+                    })
+
+                    tl.set(`.panel__options > span:nth-child(${index + 1})`, {
+                        borderBottom: '1px solid #667085',
+                    })
+
+                    tl.from(`.panel__card:nth-child(${index + 1})`, {
+                        y: () => window.innerHeight
+                    })
                 }
+
+                // Scale down previous cards
+                for (let i = 0; i < index; i++) {
+                    tl.to(
+                        `.panel__card:nth-child(${i + 1})`,
+                        {
+                            scale: 1 - (0.05 * (index - i + 1)),
+                            duration: 0.3,
+                            transformOrigin: 'top'
+                        },
+                        target
+                    )
+                }
+
+                // Current card animation
+                if (index > 0) {
+                    tl.to(
+                        `.panel__card:nth-child(${index + 1})`,
+                        {
+                            scale: 0.95,
+                            duration: 0.3,
+                            transformOrigin: 'top'
+                        },
+                        target
+                    )
+                }
+            })
+
+            function gotSeek(id: string) {
+                gsap.to(window, {
+                    duration: 0.3,
+                    scrollTo: { y: tl.scrollTrigger?.labelToScroll(id) + 10 },
+                    ease: 'power2.out',
+                })
+                tl.tweenTo(id, {
+                    duration: 0.3,
+                    onComplete: function () { },
+                    ease: 'power2.out',
+                })
             }
-        });
 
-        timelineRef.current = tl;
-        scrollTriggerRef.current = ScrollTrigger.getById("panel-timeline") || null;
+            const links = gsap.utils.toArray('.panel__options span')
 
-        cardsElements.forEach((card, index) => {
-            const label = getCardId(index);
-            const prevLabels = cards.slice(0, index).map((_, i) => getCardId(i));
+            links.forEach((link: any) => {
+                link.addEventListener('click', () => {
+                    gotSeek(link.dataset.target)
+                })
+            })
 
-            if (index > 0) {
-                tl.from(card, { y: () => window.innerHeight }, label);
-            }
-
-            tl.to(card, {
-                scale: 1,
-                duration: 0.3
-            }, label);
-
-            prevLabels.forEach((prevLabel, prevIndex) => {
-                tl.to(cardsElements[prevIndex], {
-                    scale: 1 - (0.05 * (index - prevIndex)),
-                    duration: 0.3
-                }, label);
-            });
-        });
-
-        return () => {
-            tl.kill();
-            ScrollTrigger.getAll().forEach(instance => instance.kill());
-        };
-    };
-
-    const handleCardNavigation = (targetIndex: number) => {
-        if (isAnimating || targetIndex < 0 || targetIndex >= cards.length || !scrollTriggerRef.current) return;
-
-        setIsAnimating(true);
-        ScrollTrigger.getAll().forEach(st => st.kill());
-
-        updateActiveMenuItem(targetIndex);
-
-        const sectionHeight = scrollTriggerRef.current.end - scrollTriggerRef.current.start;
-        const targetScroll = scrollTriggerRef.current.start + (targetIndex / (cards.length - 1)) * sectionHeight;
-
-        if (timelineRef.current) {
-            timelineRef.current.progress(targetIndex / (cards.length - 1));
-        }
-
-        gsap.to(window, {
-            scrollTo: targetScroll,
-            duration: 0.8,
-            ease: "power2.out",
-            onComplete: () => {
-                createScrollTrigger();
-                setIsAnimating(false);
-            }
-        });
-    };
-
-    useEffect(() => {
-        if (menuHeight === 0) return;
-
-        gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
-        const sm = gsap.matchMedia();
-
-        sm.add("(min-width: 320px)", () => {
-            createScrollTrigger();
             return () => {
-                if (timelineRef.current) timelineRef.current.kill();
-                ScrollTrigger.getAll().forEach(instance => instance.kill());
-            };
-        });
-
-        return () => {
-            sm.revert();
-        };
-    }, [menuHeight, cards]);
+                links.forEach((link: any) => {
+                    link.removeEventListener('click', () => {
+                        gotSeek(link.dataset.target)
+                    })
+                })
+                tl.kill()
+                sm.revert()
+            }
+        })
+    }, [])
 
     return (
-        <section
-            className="panel"
-            style={{
-                paddingTop: `${menuHeight + 50}px`,
-                paddingBottom: '7.5rem',
-                marginTop: `-${menuHeight}px`
-            }}
-        >
-            <div className="container-fluid">
+        <section className="panel py-5 py-lg-7" ref={panelRef}>
+            <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <div
-                            className="panel__options mb-2"
-                            ref={menuRef}
-                            style={{ position: 'absolute', top: '50px', width: '100%' }}
-                        >
-                            {cards.map((item, index) => (
+                        <div className="panel__options mb-2" ref={optionsRef}>
+                            {cards.map((card, index) => (
                                 <span
                                     key={index}
-                                    id={`menu-item-${getCardId(index)}`}
-                                    ref={el => { menuItemsRef.current[index] = el }}
-                                    data-target={getCardId(index)}
-                                    style={{ borderBottom: index === 0 ? '1px solid #667085' : '1px solid transparent' }}
+                                    data-target={cardTargets[index]}
+                                    className={index === 0 ? 'active' : ''}
                                     role="button"
-                                    onClick={() => handleCardNavigation(index)}
                                 >
-                                    {item.title}
+                                    {card.title}
                                 </span>
                             ))}
                         </div>
 
-                        <div className="panel__stack" ref={panelStackRef}>
+                        <div className="panel__stack" ref={stackRef}>
                             {cards.map((card, index) => (
                                 <div
                                     key={index}
-                                    id={getCardId(index)}
-                                    className={`panel__card panel__card--${index + 1} overflow-hidden`}
-                                    ref={el => { cardsRef.current[index] = el }}
-                                    style={{ backgroundColor: card.bgColor }}
+                                    className={`panel__card rounded-4 p-4 position-absolute`}
+                                    style={{
+                                        backgroundColor: card.bgColor,
+                                        height: '570px'
+                                    }}
                                 >
-                                    <div className="panel__content">
-                                        <h2>{card.title}</h2>
-                                        <p>{card.subtitle}</p>
-                                        <a href={card.link} className="btn btn-black-shadow">
-                                            Learn More
-                                        </a>
-                                    </div>
-                                    <div className="panel__image">
-                                        <img src={card.img} alt={card.title} />
+                                    <div className="row h-100 align-items-center">
+                                        <div className="col-md-6 d-flex flex-column">
+                                            <h3 className="fw-bold mb-3" style={{ fontSize: '2.125rem' }}>{card.title}</h3>
+                                            <p className="mb-4">{card.subtitle}</p>
+                                            <a
+                                                href={card.link}
+                                                className="btn btn-light text-dark fw-semibold align-self-start mt-4 position-relative"
+                                                style={{
+                                                    padding: '0.625rem 1.875rem',
+                                                    boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.8)',
+                                                    transition: 'box-shadow 0.2s linear'
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.boxShadow = '6px 6px 0px rgba(0, 0, 0, 0.8)'
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.boxShadow = '0px 0px 0px rgba(0, 0, 0, 0.8)'
+                                                }}
+                                            >
+                                                Learn More
+                                            </a>
+                                        </div>
+                                        <div className="col-md-6 text-end">
+                                            <picture>
+                                                <img
+                                                    src={card.img}
+                                                    alt={card.title}
+                                                    className="img-fluid"
+                                                    style={{ maxHeight: '480px' }}
+                                                />
+                                            </picture>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -295,148 +266,56 @@ export default function StackedCardsComponent() {
                 </div>
             </div>
 
-            <style jsx global>{`
-                .panel__stack {
-                    --spacer: 20px;
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    min-height: 600px;
-                    transition: none !important;
-                }
+            <style jsx>{`
+        .panel__options {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
 
-                .panel__card {
-                    width: 100%;
-                    border-radius: 30px;
-                    padding: 2.5rem;
-                    position: absolute;
-                    height: 35.625rem;
-                    will-change: transform;
-                    transform: scale(0.85);
-                    transform-origin: top;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                }
+        .panel__options span {
+          font-size: 14px;
+          cursor: pointer;
+          padding-bottom: 5px;
+          border-bottom: 1px solid transparent;
+          white-space: nowrap;
+        }
+        .panel__options span.active {
+          border-bottom: 1px solid #667085;
+        }
+        .panel__options span:hover {
+          color: inherit;
+          opacity: 0.8;
+        }
 
-                .panel__stack .panel__card:first-child {
-                    top: calc(var(--spacer) * 1);
-                    z-index: 1;
-                    transform: scale(0.95);
-                }
-                .panel__stack .panel__card:nth-child(2) {
-                    top: calc(var(--spacer) * 2);
-                    z-index: 2;
-                    transform: scale(0.90);
-                }
-                .panel__stack .panel__card:nth-child(3) {
-                    top: calc(var(--spacer) * 3);
-                    z-index: 3;
-                    transform: scale(0.85);
-                }
-                .panel__stack .panel__card:nth-child(4) {
-                    top: calc(var(--spacer) * 4);
-                    z-index: 4;
-                    transform: scale(0.80);
-                }
-                .panel__stack .panel__card:nth-child(5) {
-                    top: calc(var(--spacer) * 5);
-                    z-index: 5;
-                    transform: scale(0.75);
-                }
-                .panel__stack .panel__card:nth-child(6) {
-                    top: calc(var(--spacer) * 6);
-                    z-index: 6;
-                    transform: scale(0.70);
-                }
-                .panel__stack .panel__card:nth-child(7) {
-                    top: calc(var(--spacer) * 7);
-                    z-index: 7;
-                    transform: scale(0.65);
-                }
-                .panel__stack .panel__card:nth-child(8) {
-                    top: calc(var(--spacer) * 8);
-                    z-index: 8;
-                    transform: scale(0.60);
-                }
+        .panel__stack {
+          --spacer: 20px;
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr;
+          align-items: center;
+          justify-items: center;
+          overflow-y: visible;
+        }
 
-                .panel__content {
-                    width: 48%;
-                }
-                .panel__image {
-                    width: 52%;
-                }
-                .panel__image img {
-                    width: 100%;
-                    height: auto;
-                    border-radius: 20px;
-                }
+        .panel__card {
+          width: 100%;
+          will-change: transform;
+          top: calc(var(--spacer) * var(--card-index));
+          z-index: var(--card-index);
+        }
 
-                .btn-black-shadow {
-                    position: relative;
-                    z-index: 1;
-                    background: #000;
-                    color: #fff;
-                    padding: 12px 24px;
-                    border-radius: 8px;
-                    text-decoration: none;
-                    display: inline-block;
-                    margin-top: 20px;
-                }
-                .btn-black-shadow::before {
-                    content: "";
-                    width: 100%;
-                    height: 100%;
-                    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.8);
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    border-radius: 8px;
-                    transition: box-shadow 0.2s linear;
-                    z-index: -1;
-                }
-                .btn-black-shadow:hover::before {
-                    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
-                }
-
-                .panel__options {
-                    display: flex;
-                    gap: 20px;
-                    padding: 0 15px;
-                    overflow-x: auto;
-                    white-space: nowrap;
-                }
-                .panel__options span {
-                    cursor: pointer;
-                    padding-bottom: 5px;
-                    transition: border-color 0.2s;
-                    border-bottom: 1px solid transparent;
-                    display: inline-block;
-                    font-size: 16px;
-                    font-weight: 500;
-                }
-                .panel__options span:hover {
-                    border-bottom-color: #667085;
-                }
-                .panel__options span.active {
-                    border-bottom-color: #667085;
-                }
-
-                @media (max-width: 768px) {
-                    .panel__stack .panel__card {
-                        height: auto;
-                        min-height: 500px;
-                        flex-direction: column;
-                    }
-                    .panel__content, .panel__image {
-                        width: 100%;
-                    }
-                    .panel__image {
-                        margin-top: 20px;
-                    }
-                }
-            `}</style>
+        ${cards.map((_, index) => `
+          .panel__card:nth-child(${index + 1}) {
+            --card-index: ${index + 1};
+          }
+        `).join('')}
+      `}</style>
         </section>
-    );
+    )
 }
+
+export default PanelComponent
