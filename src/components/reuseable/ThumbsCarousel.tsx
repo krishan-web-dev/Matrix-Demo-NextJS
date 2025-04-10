@@ -14,11 +14,15 @@ export default function ThumbsCarousel() {
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
 
   const slideImages = [
-    { id: 1, url: "/img/products/1-1.jpg", fullImage: "/img/products/1-1.jpg" }
+    { id: 1, url: "/img/products/1-1.jpg", fullImage: "/img/products/1-1.jpg" },
+    { id: 2, url: "/img/products/1-1.jpg", fullImage: "/img/products/1-1.jpg" },
+    { id: 3, url: "/img/products/1-1.jpg", fullImage: "/img/products/1-1.jpg" }
   ];
 
   const thumbImages = [
-    { id: 1, url: "/img/products/1-1.jpg" }
+    { id: 1, url: "/img/products/1-1.jpg" },
+    { id: 2, url: "/img/products/1-1.jpg" },
+    { id: 3, url: "/img/products/1-1.jpg" }
   ];
 
   return (
@@ -53,7 +57,20 @@ export default function ThumbsCarousel() {
           </div>
         </div>
 
-
+        <SwiperCarousel
+          freeMode
+          threshold={2}
+          spaceBetween={10}
+          slidesPerView={5}
+          watchSlidesProgress
+          onSwiper={setThumbsSwiper}
+          modules={[FreeMode, Navigation, Thumbs]}>
+          {thumbImages.map(({ url, id }) => (
+            <SwiperSlide key={id}>
+              <Image width={114} height={120} src={url} alt="product" className="w-100 h-auto" />
+            </SwiperSlide>
+          ))}
+        </SwiperCarousel>
       </div>
     </Fragment>
   );

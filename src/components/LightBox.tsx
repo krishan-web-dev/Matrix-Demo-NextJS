@@ -9,7 +9,7 @@ export default function LightBox() {
     const lightbox = GLightbox({
       loop: false,
       moreLength: 0,
-      zoomable: false,
+      zoomable: true,
       autoplayVideos: true,
       touchNavigation: true,
       selector: "*[data-glightbox]",

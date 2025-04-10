@@ -1,9 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, Fragment, useState } from "react";
 // CUSTOM DATA
 import data from "data/product-details-page";
-import ProductDescription from "./product-description";
 
 export default function ProductActions() {
   const [quantity, setQuantity] = useState(1);
@@ -16,7 +15,8 @@ export default function ProductActions() {
   };
 
   return (
-    <div className="col-lg-7">
+    <Fragment>
+
       <div className="post-header mb-5">
         <h2 className="post-title display-5">
           <a href="#" className="link-dark">
@@ -109,9 +109,6 @@ export default function ProductActions() {
         </div>
       </form>
       */}
-
-      {/* ========== product description tab section ========== */}
-      <ProductDescription />
-    </div>
+    </Fragment>
   );
 }

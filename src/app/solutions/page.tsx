@@ -6,8 +6,6 @@ import { Hero27 } from "@/components/blocks/hero";
 import NextLink from "components/reuseable/links/NextLink";
 import Stack_Cards from "@/components/blocks/cards/Stack_Cards";
 import ServiceCards from "@/components/blocks/cards/Service_Cards";
-import Cards from '../../components/blocks/cards/Scroll_Cards_style2';
-import CardMotion from "@/components/blocks/cards/Cards";
 
 const heroContent = [
     {
@@ -35,7 +33,9 @@ export default function Solutions() {
             <main className="content-wrapper">
 
                 <Hero27 heroData={heroContent} />
+
                 <ServiceCards />
+
 
                 <Hero27 heroData={heroContent} />
             </main>

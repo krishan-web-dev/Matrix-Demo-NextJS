@@ -27,16 +27,40 @@ const productColors = [
 // product information tabs
 const tabList = [
   {
-    id: "#tab-1",
+    id: "product-detail",
     title: "Product Details",
     description:
       "Compact, efficient, very quiet: The space saving C series screw compressors are designed for long-term performance.",
   },
-  { id: "#tab-2", title: "Additional Info", description: "Test Addition Info" },
   {
-    id: "#tab-3",
+    id: "additional-info",
+    title: "Additional Info",
+    description: "Test Addition Info",
+  },
+  {
+    id: "delivery",
     title: "Delivery",
     description: "Delivery details goes here!",
+  },
+];
+
+// product information metas
+
+const metaList = [
+  {
+    id: "power",
+    title: "Power",
+    description: "2.0 HP (Horsepower)",
+  },
+  {
+    id: "tank-capacity",
+    title: "Tank Capacity",
+    description: "20 Liters",
+  },
+  {
+    id: "max-pressure",
+    title: "Max Pressure",
+    description: "125 PSI",
   },
 ];
 
@@ -125,4 +149,5 @@ export default {
   reviewList,
   options,
   breadcrumb,
+  metaList,
 };
