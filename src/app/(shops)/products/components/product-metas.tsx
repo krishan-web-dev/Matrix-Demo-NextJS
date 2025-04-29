@@ -9,46 +9,23 @@ export default function ProductMetas() {
     return (
         <Fragment>
 
-            <div className="card">
-                <div className="card-body mb-n2">
-                    {data.metaList.map(({ id, title, description }, i) => (
-                        <div className="accordion-wrapper" key={i}>
-                            <Accordion
-                                no={id}
-                                expand={false}
-                                //type="shadow-lg"
-                                heading={title}
-                                body={description}
-                            />
-                        </div>
-                    ))}
-
+            <div className="">
+                <div className="mb-n2">
                     <div className="accordion-wrapper" id="accordionExample">
                         <AccordionElement
-                            title="Table Accordion"
-                            id="collapseTable"
+                            title="Specification"
+                            id="product-specs"
                             parentId="accordionExample"
-                            defaultOpen={true}
+                            defaultOpen={false}
                         >
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Value</th>
-                                    </tr>
-                                </thead>
+                            <table className="table table-hover table-responsive">
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Item A</td>
-                                        <td>100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Item B</td>
-                                        <td>200</td>
-                                    </tr>
+                                    {data.metaList.map(({ id, title, description }, i) => (
+                                        <tr key={id}>
+                                            <td>{title}</td>
+                                            <td>{description}</td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </AccordionElement>
