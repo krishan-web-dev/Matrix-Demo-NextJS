@@ -15,9 +15,6 @@ export default function ShopLayout({ children }: PropsWithChildren) {
       <main className="content-wrapper">
         {/* MAIN CONTENT */}
         {children}
-
-        {/* SHOP SERVICE */}
-        <ShopService />
       </main>
 
       {/* PAGE FOOTER */}

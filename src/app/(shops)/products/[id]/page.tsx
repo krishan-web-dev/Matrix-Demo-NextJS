@@ -48,7 +48,7 @@ export default function ProductDetails() {
               <ProductMetas />
             </div>
           </div>
-          <ProductDescription />
+
         </div>
       </section>
     </Fragment>
