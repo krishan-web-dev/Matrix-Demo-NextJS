@@ -1,6 +1,20 @@
-import { Fragment } from "react";
+import { Fragment, ReactNode } from 'react';
 
-export default function AccordionElement({ title, children, id, parentId, defaultOpen = false }) {
+interface AccordionElementProps {
+    title: string;
+    children: ReactNode;
+    id: string;
+    parentId: string;
+    defaultOpen?: boolean;
+}
+
+export default function AccordionElement({
+    title,
+    children,
+    id,
+    parentId,
+    defaultOpen = false
+}: AccordionElementProps) {
     return (
         <Fragment>
             <div className="accordion-item card">

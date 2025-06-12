@@ -14,6 +14,7 @@ import products from "data/product-list";
 import data from "data/product-details-page";
 import ProductMetas from "../components/product-metas";
 import ProductFactSheet from "../components/product-factsheet";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   return [1, 2, 3, 4, 5, 6].map((item) => ({ id: item.toString() }));
@@ -37,14 +38,17 @@ export default function ProductDetails() {
 
       {/* ========== product info section ========== */}
       <section className="wrapper bg-light">
-        <div className="container py-14 py-md-16">
-          <div className="row gx-md-8 gx-xl-12 gy-8">
-            <div className="col-lg-6">
+        <div className="container">
+          <div className="row d-flex align-items-start gx-md-8 gx-xl-12 gy-8">
+            <div className="col-lg-6 position-lg-sticky" style={{ top: "6rem" }}>
               <ThumbsCarousel />
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 product-info">
               <ProductActions />
-              <ProductFactSheet />
+              <Link href="#" className="btn btn-lg btn-primary btn-icon btn-icon-end mb-5">
+                Factsheet <i className="uil uil-arrow-up-right" />
+              </Link>
+
               <ProductMetas />
             </div>
           </div>

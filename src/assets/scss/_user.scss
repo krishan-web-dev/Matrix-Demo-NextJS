@@ -406,3 +406,17 @@ section {
   --bs-btn-hover-color: #fff;
   --bs-btn-active-color: #fff;
 }
+
+//Product Page Style
+.product-info {
+  background: aliceblue;
+  padding: 15px 25px;
+
+  .accordion-wrapper {
+    &.product__meta {
+      background: #00000008;
+      padding: 20px;
+      backdrop-filter: blur(15px);
+    }
+  }
+}
