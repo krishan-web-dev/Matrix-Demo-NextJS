@@ -15,6 +15,7 @@ import data from "data/product-details-page";
 import ProductMetas from "../components/product-metas";
 import ProductFactSheet from "../components/product-factsheet";
 import Link from "next/link";
+import ProductSlider from "../components/product-slider";
 
 export async function generateStaticParams() {
   return [1, 2, 3, 4, 5, 6].map((item) => ({ id: item.toString() }));
@@ -29,19 +30,15 @@ export default function ProductDetails() {
 
   return (
     <Fragment>
-      {/* ========== breadcrumb section ========== */}
-      <section className="wrapper bg-gray">
+      {/* ========== product info section ========== */}
+      <section className="wrapper bg-light">
         <div className="container py-3 py-md-5">
           <Breadcrumb data={data.breadcrumb} className="mb-0" />
         </div>
-      </section>
-
-      {/* ========== product info section ========== */}
-      <section className="wrapper bg-light">
         <div className="container">
           <div className="row d-flex align-items-start gx-md-8 gx-xl-12 gy-8">
             <div className="col-lg-6 position-lg-sticky" style={{ top: "6rem" }}>
-              <ThumbsCarousel />
+              <ProductSlider />
             </div>
             <div className="col-lg-6 product-info">
               <ProductActions />
