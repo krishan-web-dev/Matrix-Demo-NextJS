@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Thumbs, Autoplay } from 'swiper/modules';
+import type { NavigationOptions } from 'swiper/types';
 import 'swiper/css';
 import 'swiper/css/thumbs';
 import 'swiper/css/navigation';
@@ -47,14 +48,7 @@ export default function ProductSlider() {
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
-        }}
-        onBeforeInit={(swiper) => {
-          // Link buttons before Swiper initializes
-          if (swiper.params.navigation) {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-          }
-        }}
+        } as NavigationOptions}
         className="product-slider-main"
       >
         <div
@@ -115,7 +109,7 @@ export default function ProductSlider() {
               <img
                 src={img.src}
                 alt={img.alt}
-                style={{ width: '100%', height: '80px', objectFit: 'cover'}}
+                style={{ width: '100%', height: '80px', objectFit: 'cover' }}
               />
             </SwiperSlide>
           ))}
