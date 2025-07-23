@@ -1,152 +1,143 @@
 'use client';
 
-import { Fragment, useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Thumbs, FreeMode } from 'swiper/modules';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import 'photoswipe/style.css';
+import { Navigation, Thumbs, Autoplay } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/thumbs';
+import 'swiper/css/navigation';
+
+import Lightbox from 'yet-another-react-lightbox';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import 'yet-another-react-lightbox/styles.css';
+import 'yet-another-react-lightbox/plugins/thumbnails.css';
+
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+
 import './product-slider.scss';
 
-interface SlideImage {
-  id: number;
-  url: string;
-  fullImage: string;
-  width: number;
-  height: number;
-}
+type Slide = {
+  src: string;
+  alt: string;
+};
 
-interface ProductSliderProps {
-  galleryID: string;
-}
-
-export default function ProductSlider({ galleryID }: ProductSliderProps) {
+export default function ProductSlider() {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
-  const lightboxRef = useRef<PhotoSwipeLightbox | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number>(-1);
 
-  const slideImages: SlideImage[] = [
-    { 
-      id: 1, 
-      url: '/img/products/1-1.jpg', 
-      fullImage: '/img/products/1-1.jpg', 
-      width: 1200, 
-      height: 800 
-    },
-    // Add your other images...
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  const slides: Slide[] = [
+    { src: '/img/products/1-1.jpg', alt: 'Photo 1' },
+    { src: '/img/test.jpg', alt: 'Photo 2' },
   ];
 
-  useEffect(() => {
-    setIsMounted(true);
-    return () => setIsMounted(false);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
-    lightboxRef.current = new PhotoSwipeLightbox({
-      gallery: `#${galleryID}`,
-      children: 'a',
-      pswpModule: () => import('photoswipe'),
-      showHideAnimationType: 'fade',
-      bgOpacity: 0.9,
-    });
-
-    // Add this important event listener
-    lightboxRef.current.on('uiRegister', () => {
-      lightboxRef.current?.pswp?.ui.registerElement({
-        name: 'download-button',
-        order: 8,
-        isButton: true,
-        tagName: 'a',
-        html: 'Download',
-        onInit: (el, pswp) => {
-          el.setAttribute('download', '');
-          el.setAttribute('target', '_blank');
-          el.setAttribute('rel', 'noopener');
-          
-          pswp.on('change', () => {
-            const currSlide = pswp.currSlide;
-            if (currSlide) {
-              el.href = currSlide.data.src;
-            }
-          });
-        }
-      });
-    });
-
-    lightboxRef.current.init();
-
-    return () => {
-      if (lightboxRef.current) {
-        lightboxRef.current.destroy();
-        lightboxRef.current = null;
-      }
-    };
-  }, [galleryID, isMounted]);
-
   return (
-    <Fragment>
-      {/* Main Slider */}
-      <div className="mb-3" id={galleryID}>
-        <Swiper
-          navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
-          modules={[Navigation, Thumbs]}
-          className="product-slider-main"
-        >
-          {slideImages.map((slide, index) => (
-            <SwiperSlide key={slide.id}>
-              <a
-                href={slide.fullImage}
-                data-pswp-width={slide.width}
-                data-pswp-height={slide.height}
-                data-pswp-src={slide.fullImage}  // This is crucial!
-                onClick={(e) => e.preventDefault()}
-              >
-                <div className="ratio ratio-1x1 cursor-zoom-in">
-                  <Image
-                    src={slide.url}
-                    alt={`Product image ${slide.id}`}
-                    fill
-                    className="object-fit-contain"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={index === 0}
-                  />
-                </div>
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+    <>
 
-      {/* Thumbnail Slider */}
+      <Swiper
+        spaceBetween={10}
+        slidesPerView={1}
+        thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+        modules={[Thumbs, Navigation, Autoplay]}
+        autoplay={{ delay: 3000 }}
+        speed={1000}
+        loop={true}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          // Link buttons before Swiper initializes
+          if (swiper.params.navigation) {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+          }
+        }}
+        className="product-slider-main"
+      >
+        <div
+          ref={prevRef}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '10px',
+            zIndex: 10,
+            cursor: 'pointer',
+            transform: 'translateY(-50%)',
+            padding: '8px',
+          }}
+          className='cs-nav'
+        >
+          <GoArrowLeft size={40} />
+        </div>
+
+        <div
+          ref={nextRef}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            right: '10px',
+            zIndex: 10,
+            cursor: 'pointer',
+            transform: 'translateY(-50%)',
+            padding: '8px',
+          }}
+          className='cs-nav'
+        >
+          <GoArrowRight size={40} />
+        </div>
+
+        {slides.map((img, i) => (
+          <SwiperSlide key={i}>
+            <img
+              src={img.src}
+              alt={img.alt}
+              onClick={() => setLightboxIndex(i)}
+              className='swiper-gl-image'
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
       <div className="thumbnail-slider-container">
         <Swiper
           onSwiper={setThumbsSwiper}
           spaceBetween={10}
           slidesPerView={4}
-          freeMode={true}
-          watchSlidesProgress={true}
-          modules={[FreeMode, Thumbs]}
+          watchSlidesProgress
+          modules={[Thumbs]}
           className="product-slider-thumbs"
         >
-          {slideImages.map((slide) => (
-            <SwiperSlide key={slide.id}>
-              <div className="ratio ratio-1x1 cursor-pointer">
-                <Image
-                  width={114}
-                  height={120}
-                  src={slide.url}
-                  alt={`Thumbnail ${slide.id}`}
-                  className="object-fit-cover w-100 h-auto"
-                />
-              </div>
+          {slides.map((img, i) => (
+            <SwiperSlide key={i}>
+              <img
+                src={img.src}
+                alt={img.alt}
+                style={{ width: '100%', height: '80px', objectFit: 'cover'}}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-    </Fragment>
+
+      <Lightbox
+        open={lightboxIndex >= 0}
+        close={() => setLightboxIndex(-1)}
+        index={lightboxIndex}
+        slides={slides}
+        plugins={[Zoom]}
+        zoom={{
+          maxZoomPixelRatio: 3,        // allows zooming in 3x beyond original size
+          zoomInMultiplier: 2,         // Optional: how much each zoom step increases
+          doubleClickMaxStops: 3,      // Allow more zoom stops
+          keyboardMoveDistance: 50,    // How far arrow keys pan when zoomed
+          wheelZoomDistanceFactor: 100,
+          pinchZoomDistanceFactor: 100
+        }}
+      />
+
+    </>
   );
 }

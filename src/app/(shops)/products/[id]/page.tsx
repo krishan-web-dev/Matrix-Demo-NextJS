@@ -1,14 +1,8 @@
 import { Fragment } from "react";
 // GLOBAL CUSTOM COMPONENTS
-import Carousel from "components/reuseable/Carousel";
 import Breadcrumb from "components/reuseable/Breadcrumb";
-import { ProductCard } from "components/reuseable/product-cards";
-import ThumbsCarousel from "components/reuseable/ThumbsCarousel";
 // LOCAL CUSTOM COMPONENTS
 import ProductActions from "../components/product-actions";
-import ProductReviews from "../components/product-reviews";
-import ProductDescription from "../components/product-description";
-import ProductReviewAside from "../components/product-review-aside";
 // CUSTOM DATA
 import products from "data/product-list";
 import data from "data/product-details-page";
@@ -16,12 +10,15 @@ import ProductMetas from "../components/product-metas";
 import ProductFactSheet from "../components/product-factsheet";
 import Link from "next/link";
 import ProductSlider from "../components/product-slider";
+import ProductEnquiryModal from "../components/ProductEnquiryModal";
+import SocialShare from "@/components/reuseable/social-share/SocialShare";
 
 export async function generateStaticParams() {
   return [1, 2, 3, 4, 5, 6].map((item) => ({ id: item.toString() }));
 }
 
 export default function ProductDetails() {
+  const productName = 'Compact series screw'; // Replace with actual product name if available
   const carouselBreakpoints = {
     0: { slidesPerView: 1 },
     768: { slidesPerView: 2 },
@@ -42,11 +39,31 @@ export default function ProductDetails() {
             </div>
             <div className="col-lg-6 product-info">
               <ProductActions />
-              <Link href="#" className="btn btn-lg btn-primary btn-icon btn-icon-end mb-5">
-                Factsheet <i className="uil uil-arrow-up-right" />
-              </Link>
+
+
+              <div className="product__links">
+                <div className="product-factsheet">
+                  <Link href="#" className="btn btn-lg btn-primary btn-icon btn-icon-end mb-5">
+                    Factsheet <i className="uil uil-arrow-up-right" />
+                  </Link>
+                </div>
+              </div>
 
               <ProductMetas />
+
+              <div className="product__sales">
+                <div className="prooduct-enquiry">
+                  <button
+                    className="enuire-now"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modal-prd-enquire">
+                    <i className="uil uil-envelope"></i>Enquire Now
+                  </button>
+                  <ProductEnquiryModal />
+                </div>
+                <SocialShare />
+              </div>
+
             </div>
           </div>
 

@@ -1,104 +1,57 @@
-
 .product-slider-main {
-  position: relative;
-  overflow: hidden;
 
   .swiper-slide {
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    
-    // Slide animation effect
-    &-active {
-      transform: scale(1);
-      opacity: 1;
-    }
-    
-    &-next, &-prev {
-      transform: scale(0.95);
-      opacity: 0.8;
-    }
-  }
+    height: 100vh;
+    max-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  // Autoplay progress bar
-  .swiper-autoplay-progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    z-index: 10;
-    background: rgba(13, 110, 253, 0.2);
-    
-    &-fill {
+    img {
       height: 100%;
-      background: #0d6efd;
-      transition: width 0.1s linear;
+      width: auto;
+      object-fit: contain;
     }
-  }
-}
 
-.product-slider-thumbs {
-  padding: 10px 0;
-  
-  .swiper-slide {
-    opacity: 0.4;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    
     &:hover {
-      opacity: 0.7;
-    }
-    
-    &-thumb-active {
-      opacity: 1;
-      border-color: #0d6efd;
-      transform: scale(1.05);
+      cursor: url('/img/icons/assets/zoom.png') 15 15, pointer;
+      //transform: scale(1.05);
+      //transition: transform 0.3s ease-in-out;
     }
   }
-}
 
-// Navigation buttons
-.product-slider-main {
-  .swiper-button-prev,
-  .swiper-button-next {
-    color: #0d6efd;
-    background: rgba(255, 255, 255, 0.8);
-    width: 40px;
-    height: 40px;
+  .swiper-wrapper,
+  img {
+    max-height: 600px;
+  }
+
+  .cs-nav{
     border-radius: 50%;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      background: rgba(255, 255, 255, 1);
-      transform: scale(1.1);
+    background:rgb(221 222 42 / 20%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    &:hover{
+      background: #407732;
+      transition: background 0.1s ease-in-out;
+      svg{
+        fill: #ddde2a
+      }
     }
-    
-    &::after {
-      font-size: 1.2rem;
-      font-weight: bold;
+
+    svg{
+      fill: #437b34;
     }
   }
 }
 
-// Slide animation classes
-.swiper-slide {
-  &-zoom-in {
-    transform: scale(0.95);
-    opacity: 0;
-    
-    &-active {
-      transform: scale(1);
-      opacity: 1;
-    }
+.thumbnail-slider-container {
+  margin-top: 25px;
+
+  .swiper-slide{
+    border: 2px solid #e6e4e4;
   }
-  
-  &-fade {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    
-    &-active {
-      opacity: 1;
-    }
+  img {
+    min-height: 125px;
   }
 }

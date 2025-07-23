@@ -38,3 +38,28 @@
   margin-bottom: 15px;
   font-size: 14px;
 }
+
+.card.accordion-item {
+  .card-header {
+
+    button {
+      padding: 0;
+
+      &::before {
+        left: auto;
+        right: 1.3rem;
+        content: "\ec06";
+        //content: "\ec5b";
+      }
+      &.collapsed::before {
+        content: "\ec5b";
+      }
+    }
+  }
+
+
+  .card-body {
+    padding: 0 1.25rem;
+  }
+
+}

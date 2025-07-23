@@ -1,5 +1,7 @@
 import { Fragment, ReactNode } from 'react';
 
+import './accordian.scss';
+
 interface AccordionElementProps {
     title: string;
     children: ReactNode;
